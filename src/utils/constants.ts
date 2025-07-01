@@ -1,8 +1,8 @@
 export const andrew = {
-  firstname: "Andrew",
-  lastname: "Moore",
+  firstname: "andrew",
+  lastname: "moore",
   title: "andrewmoore.sh",
-  description: "Developer based in yyc",
+  description: "software development | based in yyc",
 };
 export const icon_size = 16;
 export const date = {
