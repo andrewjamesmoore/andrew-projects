@@ -1,0 +1,25 @@
+---
+import NoteCard from "./NoteCard.astro";
+---
+
+<section class='flex flex-col gap-8 bg-base-100 items-start px-8 py-8'>
+  <p class='text-sm text-primary opacity-50 uppercase'>Notes</p>
+  <NoteCard
+    title='end-to-end-deployment'
+    date='2025-06'
+    description='Notes covering every stage of development and infrastructure — from local builds to production-ready automation'
+    url='https://gist.github.com/andrewjamesmoore/b3c02cc5b4e92c83f8b49bf349e44641'
+  />
+  <NoteCard
+    title='networking-and-communication'
+    date='2025-03'
+    description='A structured collection of notes covering essential networking concepts and protocols. It serves as a high-level reference to understand the fundamentals of network communication.'
+    url='https://github.com/andrewjamesmoore/networking'
+  />
+  <NoteCard
+    title='colour-systems'
+    date='2025-01'
+    description='Building a Robust Color System with HSL, CSS Custom Properties, and Typescript Theming'
+    url='https://gist.github.com/andrewjamesmoore/4d233b025a91143d609d1a929ab76a98'
+  />
+</section>

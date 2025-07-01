@@ -1,0 +1,91 @@
+---
+import ExternalLink from "@astropub/icons/ExternalLink";
+import GitHubLogo from "@astropub/icons/GitHubLogo";
+import { boolean } from "astro:schema";
+import { icon_size } from "../utils/constants";
+const {
+  title = "string",
+  description = "string",
+  status = "success" as "production" | "development",
+  link = boolean,
+  url = "string",
+  giturl = "string",
+  tags = "string[]",
+} = Astro.props;
+---
+
+<!-- card -->
+<article
+  class='flex flex-col lg:flex-row justify-between border-b border-base-300 pb-6 w-full'
+>
+  <!-- left side -->
+  <div class='flex flex-col gap-2 w-full lg:w-1/2'>
+    <div class='flex items-center gap-2'>
+      <p class='text-md font-bold'>{title}</p>
+      <div class='inline-grid *:[grid-area:1/1]'>
+        <div
+          class={`status rounded-none animate-ping ${
+            status === "production"
+              ? "bg-lime-600"
+              : status === "development"
+                ? "bg-orange-500"
+                : "bg-gray-400"
+          }`}
+        >
+        </div>
+        <div
+          class={`status rounded-none ${
+            status === "production"
+              ? "bg-lime-600"
+              : status === "development"
+                ? "bg-orange-500"
+                : "bg-gray-400"
+          }`}
+        >
+        </div>
+      </div>
+      {
+        status === "production" && (
+          <p class='text-xs text-base-content opacity-30'>production</p>
+        )
+      }
+      {
+        status === "development" && (
+          <p class='text-xs text-base-content opacity-30'>development</p>
+        )
+      }
+    </div>
+    <p class='text-sm text-base-content opacity-80'>{description}</p>
+  </div>
+  <!-- right side -->
+  <div class='flex flex-col gap-2 w-full lg:w-1/2 py-4 lg:p-0'>
+    <div class='flex gap-2 lg:justify-end'>
+      <a href={giturl} target='_blank'>
+        <GitHubLogo
+          width={icon_size}
+          height={icon_size}
+          class='hover:opacity-60'
+        />
+      </a>
+      {
+        link && (
+          <a href={url} target='_blank'>
+            <ExternalLink
+              width={icon_size}
+              height={icon_size}
+              class='hover:opacity-60'
+            />
+          </a>
+        )
+      }
+    </div>
+
+    <div class='flex gap-2 lg:justify-end flex-wrap'>
+      {
+        tags.map((tag: string) => (
+          <div class='badge badge-outline rounded-none  text-xs'>{tag}</div>
+        ))
+      }
+    </div>
+  </div>
+</article>

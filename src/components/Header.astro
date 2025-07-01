@@ -1,0 +1,31 @@
+---
+import { andrew, icon_size } from "../utils/constants";
+import Link2 from "@astropub/icons/Link2";
+---
+
+<nav class='navbar bg-base-100 items-start p-8'>
+  <section class='navbar-start'>
+    <div class='flex flex-col'>
+      <p class='text-md font-bold'>{andrew.title}</p>
+      <p class='text-xs text-base-content opacity-80'>
+        {andrew.description}
+      </p>
+    </div>
+  </section>
+  <aside class='navbar-end'>
+    <div class='flex items-end text-right gap-4'>
+      <a
+        href='https://github.com/andrewjamesmoore'
+        target='_blank'
+        class='link text-xs text-base-content opacity-80 hover:opacity-60'
+        >github
+      </a>
+      <a
+        href='mailto:hello@andrewjamesmoore.com'
+        target='_blank'
+        class='link text-xs text-base-content opacity-80 hover:opacity-60'
+        >email
+      </a>
+    </div>
+  </aside>
+</nav>

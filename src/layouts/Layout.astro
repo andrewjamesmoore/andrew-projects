@@ -1,0 +1,18 @@
+---
+import "../styles/global.css";
+import { andrew } from "../utils/constants";
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{andrew.firstname} {andrew.lastname} | {andrew.title}</title>
+  </head>
+  <body class='w-full max-w-4xl mx-auto lowercase font-mono'>
+    <slot />
+  </body>
+</html>
