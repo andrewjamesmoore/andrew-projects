@@ -1,17 +1,34 @@
 ---
 import ExternalLink from "@astropub/icons/ExternalLink";
 import GitHubLogo from "@astropub/icons/GitHubLogo";
-import { boolean } from "astro:schema";
 import { icon_size } from "../utils/constants";
+import type { Project } from "../data/projects";
 const {
   title = "string",
   description = "string",
-  status = "success" as "production" | "development",
-  link = boolean,
+  status = "production" as Project["status"],
+  link = false,
   url = "string",
   giturl = "string",
   tags = "string[]",
 } = Astro.props;
+
+const statusConfig: { [key: string]: { color: string; text: string } } = {
+  production: {
+    color: "bg-lime-600",
+    text: "production",
+  },
+  development: {
+    color: "bg-orange-500",
+    text: "development",
+  },
+  default: {
+    color: "bg-gray-400",
+    text: "archived",
+  },
+};
+
+const currentStatus = statusConfig[status] || statusConfig.default;
 ---
 
 <!-- card -->
@@ -23,37 +40,11 @@ const {
     <div class='flex items-center gap-2'>
       <p class='text-md font-bold'>{title}</p>
       <div class='inline-grid *:[grid-area:1/1]'>
-        <div
-          class={`status rounded-none animate-ping ${
-            status === "production"
-              ? "bg-lime-600"
-              : status === "development"
-                ? "bg-orange-500"
-                : "bg-gray-400"
-          }`}
-        >
+        <div class={`status rounded-none animate-ping ${currentStatus.color}`}>
         </div>
-        <div
-          class={`status rounded-none ${
-            status === "production"
-              ? "bg-lime-600"
-              : status === "development"
-                ? "bg-orange-500"
-                : "bg-gray-400"
-          }`}
-        >
-        </div>
+        <div class={`status rounded-none ${currentStatus.color}`}></div>
       </div>
-      {
-        status === "production" && (
-          <p class='text-xs text-base-content opacity-30'>production</p>
-        )
-      }
-      {
-        status === "development" && (
-          <p class='text-xs text-base-content opacity-30'>development</p>
-        )
-      }
+      <p class='text-xs text-base-content opacity-30'>{currentStatus.text}</p>
     </div>
     <p class='text-sm text-base-content opacity-80'>{description}</p>
   </div>
