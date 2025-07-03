@@ -4,7 +4,8 @@
 }
 
 .articleWrapper {
-  @apply flex flex-col lg:flex-row justify-between border-b border-base-200 py-6;
+  @apply flex flex-col lg:flex-row justify-between py-5 border-b;
+  border-color: rgba(79, 125, 199, 0.2); /* Tailwind blue-500 at 50% opacity */
 }
 
 .articleSide {
