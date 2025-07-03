@@ -1,7 +1,7 @@
 export const andrew = {
   firstname: "andrew",
   lastname: "moore",
-  title: "andrewmoore.sh",
+  title: "andrew-moore",
   description: "developer in yyc",
 };
 export const icon_size = 16;
