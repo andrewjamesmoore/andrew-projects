@@ -3,7 +3,7 @@ import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard.astro";
 ---
 
-<section class='flex flex-col gap-6 bg-base-100 items-start px-8 pt-12 pb-8'>
-  <p class='text-sm text-primary opacity-50 uppercase'>Projects</p>
+<section class='sectionWrapper'>
+  <p class='sectionTitle'>Projects</p>
   {Object.values(projects).map((project) => <ProjectCard {...project} />)}
 </section>

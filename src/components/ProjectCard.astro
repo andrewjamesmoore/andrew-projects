@@ -32,25 +32,23 @@ const currentStatus = statusConfig[status] || statusConfig.default;
 ---
 
 <!-- card -->
-<article
-  class='flex flex-col lg:flex-row justify-between border-b border-base-300 pb-6 w-full'
->
+<article class='articleWrapper'>
   <!-- left side -->
-  <div class='flex flex-col gap-2 w-full lg:w-1/2'>
+  <div class='articleSide'>
     <div class='flex items-center gap-2'>
-      <p class='text-md font-bold'>{title}</p>
+      <p class='font-bold'>{title}</p>
       <div class='inline-grid *:[grid-area:1/1]'>
         <div class={`status rounded-none animate-ping ${currentStatus.color}`}>
         </div>
         <div class={`status rounded-none ${currentStatus.color}`}></div>
       </div>
-      <p class='text-xs text-base-content opacity-30'>{currentStatus.text}</p>
+      <p class='text-xs opacity-30'>{currentStatus.text}</p>
     </div>
-    <p class='text-sm text-base-content opacity-80'>{description}</p>
+    <p class='text-sm opacity-80 pb-2 lg:pb-0'>{description}</p>
   </div>
   <!-- right side -->
-  <div class='flex flex-col gap-2 w-full lg:w-1/2 py-4 lg:p-0'>
-    <div class='flex gap-2 lg:justify-end'>
+  <div class='articleSide'>
+    <div class='flex gap-2 pb-2 lg:pb-0 lg:justify-end'>
       <a href={giturl} target='_blank'>
         <GitHubLogo
           width={icon_size}
@@ -70,8 +68,7 @@ const currentStatus = statusConfig[status] || statusConfig.default;
         )
       }
     </div>
-
-    <div class='flex gap-2 lg:justify-end flex-wrap'>
+    <div class='flex flex-wrap gap-2 lg:justify-end'>
       {
         tags.map((tag: string) => (
           <div class='badge badge-outline rounded-none  text-xs'>{tag}</div>

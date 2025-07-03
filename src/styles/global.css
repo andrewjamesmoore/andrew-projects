@@ -2,3 +2,29 @@
 @plugin "daisyui" {
   themes: aqua --default;
 }
+
+.articleWrapper {
+  @apply flex flex-col lg:flex-row justify-between border-b border-base-200 py-6;
+}
+
+.articleSide {
+  @apply flex flex-col gap-2 w-full lg:w-1/2;
+}
+
+.linkText {
+  @apply link text-xs text-primary opacity-80 hover:opacity-60;
+}
+
+/* .sectionWrapper {
+  @apply p-8;
+} */
+
+.sectionTitle {
+  @apply text-sm text-primary opacity-60 uppercase;
+}
+
+@layer base {
+  body {
+    @apply w-full max-w-4xl mx-auto lowercase font-mono p-8;
+  }
+}

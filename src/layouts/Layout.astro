@@ -15,7 +15,9 @@ import { andrew } from "../utils/constants";
       {andrew.lastname} | software development | {andrew.description}
     </title>
   </head>
-  <body class='w-full max-w-4xl mx-auto lowercase font-mono'>
-    <slot />
+  <body>
+    <section class='flex flex-col gap-16'>
+      <slot />
+    </section>
   </body>
 </html>

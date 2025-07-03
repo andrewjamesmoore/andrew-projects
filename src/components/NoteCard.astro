@@ -10,20 +10,18 @@ const {
 } = Astro.props;
 ---
 
-<article
-  class='flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-base-300 pb-6 w-full'
->
-  <div class='flex flex-col gap-2 w-full lg:w-1/2 pb-4 lg:p-0'>
-    <p class='text-xs text-base-content opacity-50'>{date}</p>
+<article class='articleWrapper'>
+  <div class='articleSide'>
+    <p class='text-xs opacity-50'>{date}</p>
     <div class='flex gap-2 items-center'>
-      <p class='text-md font-bold'>{title}</p>
+      <p class='font-bold'>{title}</p>
       <FileText width={icon_size} height={icon_size} />
     </div>
-    <p class='text-sm text-base-content opacity-80'>
+    <p class='text-sm opacity-80'>
       {description}
     </p>
   </div>
-  <a href={url} target='_blank'>
+  <a href={url} target='_blank' class='pt-4 lg: pt-0'>
     <button class='btn btn-outline rounded-none font-normal'>
       <ExternalLink width={icon_size} height={icon_size} />
       read notes
