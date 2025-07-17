@@ -56,7 +56,7 @@ export const projects: Record<string, Project> = {
     title: "last-tab-chrome-extension",
     description:
       "A simple Chrome extension that lets you use a keybind to return to the last used tab.",
-    status: "development",
+    status: "production",
     link: false,
     giturl: "https://github.com/andrewjamesmoore/last-tab-chrome-extension",
     tags: ["Javascript", "Chrome", "Extension"],
