@@ -1,9 +1,12 @@
 ---
-import { projects } from "../data/projects";
+import type { Project } from "../types/Project";
+import { getProjects } from "../queries/getProjects";
 import ProjectCard from "./ProjectCard.astro";
+
+const projects = await getProjects();
 ---
 
 <section class='sectionWrapper'>
   <p class='sectionTitle'>Projects</p>
-  {Object.values(projects).map((project) => <ProjectCard {...project} />)}
+  {projects.map((project: Project) => <ProjectCard project={project} />)}
 </section>

@@ -2,41 +2,16 @@
 import ExternalLink from "@astropub/icons/ExternalLink";
 import GitHubLogo from "@astropub/icons/GitHubLogo";
 import { icon_size } from "../utils/constants";
-import type { Project } from "../data/projects";
-const {
-  title = "string",
-  description = "string",
-  status = "production" as Project["status"],
-  link = false,
-  url = "string",
-  giturl = "string",
-  tags = "string[]",
-} = Astro.props;
+import { getStatusConfig } from "../utils/getStatusConfig";
 
-const statusConfig: { [key: string]: { color: string; text: string } } = {
-  production: {
-    color: "bg-lime-600",
-    text: "production",
-  },
-  development: {
-    color: "bg-orange-500",
-    text: "development",
-  },
-  default: {
-    color: "bg-gray-400",
-    text: "archived",
-  },
-};
-
-const currentStatus = statusConfig[status] || statusConfig.default;
+const { project } = Astro.props;
+const currentStatus = getStatusConfig(project.status);
 ---
 
-<!-- card -->
 <article class='articleWrapper'>
-  <!-- left side -->
   <div class='articleSide'>
     <div class='flex items-center gap-2'>
-      <p class='font-bold'>{title}</p>
+      <p class='font-bold'>{project.title}</p>
       <div class='inline-grid *:[grid-area:1/1]'>
         <div class={`status rounded-none animate-ping ${currentStatus.color}`}>
         </div>
@@ -44,12 +19,11 @@ const currentStatus = statusConfig[status] || statusConfig.default;
       </div>
       <p class='text-xs opacity-30'>{currentStatus.text}</p>
     </div>
-    <p class='text-sm opacity-80 pb-2 lg:pb-0'>{description}</p>
+    <p class='text-sm opacity-80 pb-2 lg:pb-0'>{project.description}</p>
   </div>
-  <!-- right side -->
   <div class='articleSide'>
     <div class='flex gap-2 pb-2 lg:pb-0 lg:justify-end'>
-      <a href={giturl} target='_blank'>
+      <a href={project.giturl} target='_blank'>
         <GitHubLogo
           width={icon_size}
           height={icon_size}
@@ -57,8 +31,8 @@ const currentStatus = statusConfig[status] || statusConfig.default;
         />
       </a>
       {
-        link && (
-          <a href={url} target='_blank'>
+        project.link && (
+          <a href={project.url} target='_blank'>
             <ExternalLink
               width={icon_size}
               height={icon_size}
@@ -70,8 +44,8 @@ const currentStatus = statusConfig[status] || statusConfig.default;
     </div>
     <div class='flex flex-wrap gap-2 lg:justify-end'>
       {
-        tags.map((tag: string) => (
-          <div class='badge badge-outline rounded-none  text-xs'>{tag}</div>
+        project.tags.map((tag: string) => (
+          <div class='badge badge-outline rounded-none text-xs'>{tag}</div>
         ))
       }
     </div>
