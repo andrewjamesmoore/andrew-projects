@@ -9,8 +9,8 @@ const { note } = Astro.props;
   <div class='articleSide'>
     <p class='text-xs opacity-50'>{note.date}</p>
     <div class='flex gap-2 items-center'>
-      <p class='font-bold'>{note.title}</p>
       <FileText width={icon_size} height={icon_size} />
+      <p class='font-bold'>{note.title}</p>
     </div>
     <p class='text-sm opacity-80'>
       {note.description}
