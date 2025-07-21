@@ -1,43 +1,20 @@
 ---
+import type { Note } from "../types/Note";
 import NoteCard from "./NoteCard.astro";
+import { getNotes } from "../queries/getNotes";
+
+const notes = await getNotes();
+const allNotes = notes.reverse();
 ---
 
 <section class='flex flex-col items-start'>
   <p class='sectionTitle'>Notes</p>
-  <NoteCard
-    title='graphql-server-using-go-and-gqlgen'
-    date='2025-07'
-    description='Building-a-completely-overkill-go-api-for-projects-and-notes(this-site!)'
-    url='https://github.com/andrewjamesmoore/andrew-projects-api'
-  />
-  <NoteCard
-    title='tls-chat-server-and-client-built-with-go'
-    date='2025-07'
-    description='Weekend learning experiment to explore low-level networking in Go — specifically using net and tls to create a secure, terminal-based chat server and client.'
-    url='https://github.com/andrewjamesmoore/secure-chat'
-  />
-  <NoteCard
-    title='end-to-end-deployment'
-    date='2025-06'
-    description='Notes covering every stage of development and infrastructure — from local builds to production-ready automation'
-    url='https://gist.github.com/andrewjamesmoore/b3c02cc5b4e92c83f8b49bf349e44641'
-  />
-  <NoteCard
-    title='networking-and-communication'
-    date='2025-03'
-    description='A structured collection of notes covering essential networking concepts and protocols. It serves as a high-level reference to understand the fundamentals of network communication.'
-    url='https://github.com/andrewjamesmoore/networking'
-  />
-  <NoteCard
-    title='Zustand for react state management'
-    date='2025-02'
-    description='Exploring state management through a basic authentication flow'
-    url='https://gist.github.com/andrewjamesmoore/0c7034c54a540b0a42cc95dc12a25f14'
-  />
-  <NoteCard
-    title='colour-systems'
-    date='2025-01'
-    description='Building a Robust Color System with HSL, CSS Custom Properties, and Typescript Theming'
-    url='https://gist.github.com/andrewjamesmoore/4d233b025a91143d609d1a929ab76a98'
-  />
+  {allNotes.slice(0, 4).map((note: Note) => <NoteCard note={note} />)}
+  <div tabindex={0} class='collapse collapse-arrow'>
+    <input type='checkbox' />
+    <div class='collapse-title text-sm opacity-60 px-0'>See more</div>
+    <div class='collapse-content px-0'>
+      {allNotes.slice(4).map((note: Note) => <NoteCard note={note} />)}
+    </div>
+  </div>
 </section>

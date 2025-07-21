@@ -12,3 +12,15 @@ export const getProjectsQuery = `
     }
   }
 `;
+
+export const getNotesQuery = `
+  query {
+    notes {
+      id
+      title
+      description
+      url
+      date
+    }
+  }
+`;

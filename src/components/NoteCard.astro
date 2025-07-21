@@ -2,26 +2,21 @@
 import ExternalLink from "@astropub/icons/ExternalLink";
 import FileText from "@astropub/icons/FileText";
 import { icon_size } from "../utils/constants";
-const {
-  title = "string",
-  description = "string",
-  url = "string",
-  date = "string",
-} = Astro.props;
+const { note } = Astro.props;
 ---
 
 <article class='articleWrapper'>
   <div class='articleSide'>
-    <p class='text-xs opacity-50'>{date}</p>
+    <p class='text-xs opacity-50'>{note.date}</p>
     <div class='flex gap-2 items-center'>
-      <p class='font-bold'>{title}</p>
+      <p class='font-bold'>{note.title}</p>
       <FileText width={icon_size} height={icon_size} />
     </div>
     <p class='text-sm opacity-80'>
-      {description}
+      {note.description}
     </p>
   </div>
-  <a href={url} target='_blank' class='pt-4 lg: pt-0'>
+  <a href={note.url} target='_blank' class='pt-4'>
     <button class='btn btn-outline rounded-none font-normal'>
       <ExternalLink width={icon_size} height={icon_size} />
       read notes
