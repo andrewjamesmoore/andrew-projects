@@ -17,6 +17,7 @@
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
+    "@astrojs/vercel": "^9.0.0",
     "daisyui": "^5.0.43"
   }
 }

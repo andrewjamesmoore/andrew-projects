@@ -4,7 +4,7 @@ This project is a curated collection of projects, experiments, and notes, built 
 
 It serves both as a personal site and documentation, showcasing real-world design and development projects.
 
-Check out the [completely overkill backend](https://github.com/andrewjamesmoore/andrew-projects-api) that adds real-time projects and notes using Go and Graphql mutations
+Check out the [completely overkill backend](https://github.com/andrewjamesmoore/andrew-projects-api) that adds real-time projects and notes using Go and Graphql mutations (DEPRECATED: can still view the project however storing content locally for cost savings)
 
 > Designed and developed using [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [DaisyUI](https://daisyui.com/) (I much prefer CSS modules for the record)
 
