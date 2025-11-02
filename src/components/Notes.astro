@@ -1,5 +1,10 @@
 ---
+import type { Note } from "../types/Note";
 import NoteCard from "./NoteCard.astro";
+import { getNotes } from "../queries/getNotes";
+
+const notes = await getNotes();
+const allNotes = notes.reverse();
 ---
 
 <section class="flex flex-col items-start">

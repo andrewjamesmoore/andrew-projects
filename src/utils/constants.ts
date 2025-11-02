@@ -5,6 +5,6 @@ export const andrew = {
   description: "developer in yyc",
 };
 export const icon_size = 16;
-export const date = {
+export const dateYear = {
   year: new Date().getFullYear(),
 };
