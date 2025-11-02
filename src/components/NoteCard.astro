@@ -3,28 +3,28 @@ import ExternalLink from "@astropub/icons/ExternalLink";
 import FileText from "@astropub/icons/FileText";
 import { icon_size } from "../utils/constants";
 const {
-  title = "string",
-  description = "string",
-  url = "string",
-  date = "string",
+    title = "string",
+    description = "string",
+    url = "string",
+    date = "string",
 } = Astro.props;
 ---
 
-<article class='articleWrapper'>
-  <div class='articleSide'>
-    <p class='text-xs opacity-50'>{date}</p>
-    <div class='flex gap-2 items-center'>
-      <p class='font-bold'>{title}</p>
-      <FileText width={icon_size} height={icon_size} />
+<article class="articleWrapper">
+    <div class="articleSide">
+        <p class="text-xs opacity-50">{date}</p>
+        <div class="flex gap-2 items-center">
+            <p class="font-bold">{title}</p>
+            <FileText width={icon_size} height={icon_size} />
+        </div>
+        <p class="text-sm opacity-80">
+            {description}
+        </p>
     </div>
-    <p class='text-sm opacity-80'>
-      {description}
-    </p>
-  </div>
-  <a href={url} target='_blank' class='pt-4 lg: pt-0'>
-    <button class='btn btn-outline rounded-none font-normal'>
-      <ExternalLink width={icon_size} height={icon_size} />
-      read notes
-    </button></a
-  >
+    <a href={url} target="_blank" class="pt-4 lg: pt-0">
+        <button class="btn btn-outline rounded-none font-normal">
+            <ExternalLink width={icon_size} height={icon_size} />
+            read notes
+        </button></a
+    >
 </article>

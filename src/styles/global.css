@@ -1,19 +1,24 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: aqua --default;
+    themes: aqua --default;
 }
 
 .articleWrapper {
-  @apply flex flex-col lg:flex-row w-full justify-between py-5 border-b;
-  border-color: rgba(79, 125, 199, 0.2); /* Tailwind blue-500 at 50% opacity */
+    @apply flex flex-col lg:flex-row w-full justify-between py-5 border-b;
+    border-color: rgba(
+        79,
+        125,
+        199,
+        0.2
+    ); /* Tailwind blue-500 at 50% opacity */
 }
 
 .articleSide {
-  @apply flex flex-col gap-2 w-full lg:w-1/2;
+    @apply flex flex-col gap-2 w-full lg:w-1/2;
 }
 
 .linkText {
-  @apply link text-xs text-primary opacity-80 hover:opacity-60;
+    @apply link text-xs text-primary opacity-80 hover:opacity-60;
 }
 
 /* .sectionWrapper {
@@ -21,11 +26,11 @@
 } */
 
 .sectionTitle {
-  @apply text-sm text-primary opacity-60 uppercase;
+    @apply text-sm text-primary opacity-60 uppercase;
 }
 
 @layer base {
-  body {
-    @apply w-full max-w-4xl mx-auto lowercase font-mono p-8;
-  }
+    body {
+        @apply w-full max-w-4xl mx-auto lowercase font-mono p-8;
+    }
 }
