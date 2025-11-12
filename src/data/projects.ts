@@ -34,9 +34,8 @@ export const projects: Record<string, Project> = {
     title: "py-runner-backend",
     description:
       "Designing the backend, API, and cloud infrastructure for an educational Python app.",
-    status: "production",
-    link: true,
-    url: "https://pyrunner.net",
+    status: "offline",
+    link: false,
     giturl: "https://github.com/andrewjamesmoore/py-runner-backend",
     tags: [
       "Terraform",
