@@ -23,9 +23,9 @@ const statusConfig: { [key: string]: { color: string; text: string } } = {
         text: "development",
     },
     offline: {
-    color: "bg-red-500",
-      text: "offline",
-      },
+        color: "bg-red-500",
+        text: "offline",
+    },
     default: {
         color: "bg-gray-400",
         text: "archived",
@@ -36,48 +36,48 @@ const currentStatus = statusConfig[status] || statusConfig.default;
 ---
 
 <!-- card -->
-<article class="articleWrapper">
+<article class='articleWrapper'>
     <!-- left side -->
-    <div class="articleSide">
-        <div class="flex items-center gap-2">
-            <p class="font-bold">{title}</p>
-            <div class="inline-grid *:[grid-area:1/1]">
+    <div class='articleSide'>
+        <div class='flex items-center gap-2'>
+            <p class='font-bold'>{title}</p>
+            <div class='inline-grid *:[grid-area:1/1]'>
                 <div
                     class={`status rounded-none animate-ping ${currentStatus.color}`}
                 >
                 </div>
                 <div class={`status rounded-none ${currentStatus.color}`}></div>
             </div>
-            <p class="text-xs opacity-30">{currentStatus.text}</p>
+            <p class='text-xs opacity-30'>{currentStatus.text}</p>
         </div>
-        <p class="text-sm opacity-80 pb-2 lg:pb-0">{description}</p>
+        <p class='text-sm opacity-80 pb-2 lg:pb-0'>{description}</p>
     </div>
     <!-- right side -->
-    <div class="articleSide">
-        <div class="flex gap-2 pb-2 lg:pb-0 lg:justify-end">
-            <a href={giturl} target="_blank">
+    <div class='articleSide'>
+        <div class='flex gap-2 pb-2 lg:pb-0 lg:justify-end'>
+            <a href={giturl} target='_blank'>
                 <GitHubLogo
                     width={icon_size}
                     height={icon_size}
-                    class="hover:opacity-60"
+                    class='hover:opacity-60'
                 />
             </a>
             {
                 link && (
-                    <a href={url} target="_blank">
+                    <a href={url} target='_blank'>
                         <ExternalLink
                             width={icon_size}
                             height={icon_size}
-                            class="hover:opacity-60"
+                            class='hover:opacity-60'
                         />
                     </a>
                 )
             }
         </div>
-        <div class="flex flex-wrap gap-2 lg:justify-end">
+        <div class='flex flex-wrap gap-2 lg:justify-end'>
             {
                 tags.map((tag: string) => (
-                    <div class="badge badge-outline rounded-none  text-xs">
+                    <div class='badge badge-outline rounded-none  text-xs'>
                         {tag}
                     </div>
                 ))
