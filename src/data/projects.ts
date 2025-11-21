@@ -1,7 +1,7 @@
 export interface Project {
   title: string;
   description: string;
-  status: "production" | "development";
+  status: "production" | "development" | "offline";
   link: boolean;
   url?: string;
   giturl: string;
