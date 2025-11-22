@@ -1,0 +1,32 @@
+---
+import { Dice6 } from "lucide-react";
+---
+
+<button
+    id='theme-dice'
+    class='linkText cursor-pointer hover:text-primary transition-all duration-300 ease-in-out'
+    aria-label='Random Theme'
+>
+    <Dice6 className='w-4 h-4' />
+</button>
+
+<script>
+    import { getRandomTheme } from "../utils/theme";
+
+    const dice = document.getElementById("theme-dice");
+    let rotation = 0;
+
+    if (dice) {
+        dice.addEventListener("click", () => {
+            // Rotate the dice
+            rotation += 90;
+            dice.style.transform = `rotate(${rotation}deg)`;
+
+            // Change the theme
+            const currentTheme = document.documentElement.dataset.theme;
+            const newTheme = getRandomTheme(currentTheme);
+            document.documentElement.dataset.theme = newTheme;
+            console.log("Current theme:", newTheme);
+        });
+    }
+</script>

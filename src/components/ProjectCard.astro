@@ -2,6 +2,7 @@
 import ExternalLink from "@astropub/icons/ExternalLink";
 import GitHubLogo from "@astropub/icons/GitHubLogo";
 import { icon_size } from "../utils/constants";
+import { getStatusConfig } from "../utils/getStatusConfig";
 import type { Project } from "../data/projects";
 const {
     title = "string",
@@ -13,26 +14,7 @@ const {
     tags = "string[]",
 } = Astro.props;
 
-const statusConfig: { [key: string]: { color: string; text: string } } = {
-    production: {
-        color: "bg-lime-600",
-        text: "production",
-    },
-    development: {
-        color: "bg-orange-500",
-        text: "development",
-    },
-    offline: {
-        color: "bg-red-500",
-        text: "offline",
-    },
-    default: {
-        color: "bg-gray-400",
-        text: "archived",
-    },
-};
-
-const currentStatus = statusConfig[status] || statusConfig.default;
+const currentStatus = getStatusConfig(status);
 ---
 
 <!-- card -->

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-    themes: aqua --default;
+    themes: all;
 }
 
 .articleWrapper {
@@ -10,7 +10,7 @@
         125,
         199,
         0.2
-    ); /* Tailwind blue-500 at 50% opacity */
+    );
 }
 
 .articleSide {
@@ -20,10 +20,6 @@
 .linkText {
     @apply link text-xs text-primary opacity-80 hover:opacity-60;
 }
-
-/* .sectionWrapper {
-  @apply p-8;
-} */
 
 .sectionTitle {
     @apply text-sm text-primary opacity-60 uppercase;
