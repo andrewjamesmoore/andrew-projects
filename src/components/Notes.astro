@@ -1,9 +1,46 @@
 ---
 import NoteCard from "./NoteCard.astro";
 import { notes } from "../data/notes";
+
+const allNotes = Object.values(notes);
+const initialCount = 4;
+const initialNotes = allNotes.slice(0, initialCount);
+const extraNotes = allNotes.slice(initialCount);
+const hasMore = extraNotes.length > 0;
 ---
 
-<section class='flex flex-col items-start'>
+<section class='flex flex-col items-start w-full'>
     <p class='sectionTitle'>Notes</p>
-    {Object.values(notes).map((note) => <NoteCard {...note} />)}
+    <div class='flex flex-col w-full'>
+        {initialNotes.map((note) => <NoteCard {...note} />)}
+    </div>
+
+    {
+        hasMore && (
+            <>
+                <input type='checkbox' id='expand-notes' class='peer hidden' />
+                <div class='hidden peer-checked:flex flex-col w-full'>
+                    {extraNotes.map((note) => (
+                        <NoteCard {...note} />
+                    ))}
+                </div>
+                <label
+                    for='expand-notes'
+                    class='linkText mt-4 cursor-pointer hover:opacity-60 self-start select-none'
+                >
+                    <span class='view-more'>View More</span>
+                    <span class='view-less hidden'>See less</span>
+                </label>
+            </>
+        )
+    }
 </section>
+
+<style>
+    #expand-notes:checked ~ label .view-more {
+        display: none;
+    }
+    #expand-notes:checked ~ label .view-less {
+        display: block;
+    }
+</style>

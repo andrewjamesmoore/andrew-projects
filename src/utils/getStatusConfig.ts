@@ -1,4 +1,4 @@
-type Status = "Production" | "Development" | string;
+type Status = "Production" | "Development" | "Offline" | string;
 
 export function getStatusConfig(status: Status) {
   const normalized = status.toLowerCase();
@@ -11,6 +11,10 @@ export function getStatusConfig(status: Status) {
     development: {
       color: "bg-orange-500",
       text: "development",
+    },
+    offline: {
+      color: "bg-red-500",
+      text: "offline",
     },
     default: {
       color: "bg-gray-400",

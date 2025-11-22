@@ -1,30 +1,32 @@
 ---
 import { andrew } from "../utils/constants";
+import ThemeDice from "./ThemeDice.astro";
 ---
 
-<nav class="flex justify-between items-start pb-20">
+<nav class='flex justify-between items-start pb-20'>
     <section>
-        <div class="flex-col">
-            <p class="font-bold">{andrew.title}</p>
-            <p class="text-xs opacity-80">
+        <div class='flex-col'>
+            <p class='font-bold'>{andrew.title}</p>
+            <p class='text-xs opacity-80'>
                 {andrew.description}
             </p>
         </div>
     </section>
     <aside>
-        <div class="flex items-end gap-4">
+        <div class='flex items-end gap-4'>
             <a
-                href="https://github.com/andrewjamesmoore"
-                target="_blank"
-                class="linkText"
+                href='https://github.com/andrewjamesmoore'
+                target='_blank'
+                class='linkText'
                 >github
             </a>
             <a
-                href="mailto:hello@andrewjamesmoore.com"
-                target="_blank"
-                class="linkText"
+                href='mailto:hello@andrewjamesmoore.com'
+                target='_blank'
+                class='linkText'
                 >email
             </a>
+            <ThemeDice />
         </div>
     </aside>
 </nav>
