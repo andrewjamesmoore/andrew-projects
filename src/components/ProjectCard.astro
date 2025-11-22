@@ -15,45 +15,47 @@ const currentStatus = getStatusConfig(status);
 ---
 
 <!-- card -->
-<article class='articleWrapper'>
+<article class="articleWrapper">
     <!-- left side -->
-    <div class='articleSide'>
-        <div class='flex items-center gap-2'>
-            <p class='font-bold'>{title}</p>
-            <div class='inline-grid *:[grid-area:1/1]'>
+    <div class="articleSide">
+        <div class="flex items-center gap-2">
+            <p class="font-bold">{title}</p>
+            <div class="inline-grid *:[grid-area:1/1]">
                 <div
                     class={`status rounded-none animate-ping ${currentStatus.color}`}
                 >
                 </div>
                 <div class={`status rounded-none ${currentStatus.color}`}></div>
             </div>
-            <p class='text-xs opacity-30'>{currentStatus.text}</p>
+            <p class="text-xs opacity-30">{currentStatus.text}</p>
         </div>
-        <p class='text-sm opacity-80 pb-2 lg:pb-0'>{description}</p>
+        <p class="text-sm opacity-80 pb-2 lg:pb-0">{description}</p>
     </div>
     <!-- right side -->
-    <div class='articleSide'>
-        <div class='flex gap-3 pb-2 lg:pb-0 lg:justify-end items-center'>
-            <span class='text-xs opacity-40 font-medium'>view project:</span>
+    <div class="articleSide">
+        <div class="flex gap-3 pb-2 lg:pb-0 lg:justify-end items-center">
+            <span class="text-xs opacity-40 font-medium">view project:</span>
             <a
                 href={giturl}
-                target='_blank'
-                class='link-icon-wrapper group'
-                aria-label='View source code on GitHub'
-                title='View source code on GitHub'
+                target="_blank"
+                class="link-icon-wrapper group"
+                aria-label="View source code on GitHub"
+                title="View source code on GitHub"
             >
                 <GitHubLogo
                     width={icon_size}
                     height={icon_size}
-                    class='transition-all duration-200 group-hover:scale-110'
+                    class="transition-all duration-200 group-hover:scale-110"
                 />
-                <span class='link-label'>GitHub</span>
+                <span class="link-label linkText" data-text="GitHub"
+                    >GitHub</span
+                >
             </a>
         </div>
-        <div class='flex flex-wrap gap-2 lg:justify-end'>
+        <div class="flex flex-wrap gap-2 lg:justify-end">
             {
                 tags.map((tag: string) => (
-                    <div class='badge badge-outline rounded-none  text-xs'>
+                    <div class="badge badge-outline rounded-none  text-xs">
                         {tag}
                     </div>
                 ))
