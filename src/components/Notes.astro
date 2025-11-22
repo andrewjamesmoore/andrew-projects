@@ -28,8 +28,12 @@ const hasMore = extraNotes.length > 0;
                     for='expand-notes'
                     class='linkText mt-4 cursor-pointer hover:opacity-60 self-start select-none'
                 >
-                    <span class='view-more'>View More</span>
-                    <span class='view-less hidden'>See less</span>
+                    <span class='view-more' data-text='View More'>
+                        View More
+                    </span>
+                    <span class='view-less hidden' data-text='See less'>
+                        See less
+                    </span>
                 </label>
             </>
         )
