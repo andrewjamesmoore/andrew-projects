@@ -2,8 +2,6 @@ export interface Project {
   title: string;
   description: string;
   status: "production" | "development" | "offline";
-  link: boolean;
-  url?: string;
   giturl: string;
   tags: string[];
 }
@@ -14,8 +12,6 @@ export const projects: Record<string, Project> = {
     description:
       "Building samdesk - design and development for real-time threat detection security software.",
     status: "production",
-    link: true,
-    url: "https://samdesk.io",
     giturl: "https://github.com/SAMdesk",
     tags: [
       "SaaS",
@@ -35,8 +31,7 @@ export const projects: Record<string, Project> = {
     description:
       "Designing the backend, API, and cloud infrastructure for an educational Python app.",
     status: "offline",
-    link: false,
-    giturl: "https://github.com/andrewjamesmoore/py-runner-backend",
+    giturl: "https://gist.github.com/andrewjamesmoore/b3c02cc5b4e92c83f8b49bf349e44641",
     tags: [
       "Terraform",
       "FastAPI",
@@ -56,7 +51,6 @@ export const projects: Record<string, Project> = {
     description:
       "A simple Chrome extension that lets you use a keybind to return to the last used tab.",
     status: "production",
-    link: false,
     giturl: "https://github.com/andrewjamesmoore/last-tab-chrome-extension",
     tags: ["Javascript", "Chrome", "Extension"],
   },
@@ -65,8 +59,6 @@ export const projects: Record<string, Project> = {
     title: "figgy-sticks",
     description: "Figma plugin for using sticky notes in design files.",
     status: "production",
-    link: true,
-    url: "https://www.figma.com/community/plugin/1478109446396282175/figgy-sticks-sticky-notes",
     giturl: "https://github.com/andrewjamesmoore/figgy-sticks",
     tags: ["Javascript", "Figma", "HTML", "CSS", "Extension"],
   },

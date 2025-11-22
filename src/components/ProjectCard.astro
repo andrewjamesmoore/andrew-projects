@@ -1,5 +1,4 @@
 ---
-import ExternalLink from "@astropub/icons/ExternalLink";
 import GitHubLogo from "@astropub/icons/GitHubLogo";
 import { icon_size } from "../utils/constants";
 import { getStatusConfig } from "../utils/getStatusConfig";
@@ -8,8 +7,6 @@ const {
     title = "string",
     description = "string",
     status = "production" as Project["status"],
-    link = false,
-    url = "string",
     giturl = "string",
     tags = "string[]",
 } = Astro.props;
@@ -36,25 +33,22 @@ const currentStatus = getStatusConfig(status);
     </div>
     <!-- right side -->
     <div class='articleSide'>
-        <div class='flex gap-2 pb-2 lg:pb-0 lg:justify-end'>
-            <a href={giturl} target='_blank'>
+        <div class='flex gap-3 pb-2 lg:pb-0 lg:justify-end items-center'>
+            <span class='text-xs opacity-40 font-medium'>view project:</span>
+            <a
+                href={giturl}
+                target='_blank'
+                class='link-icon-wrapper group'
+                aria-label='View source code on GitHub'
+                title='View source code on GitHub'
+            >
                 <GitHubLogo
                     width={icon_size}
                     height={icon_size}
-                    class='hover:opacity-60'
+                    class='transition-all duration-200 group-hover:scale-110'
                 />
+                <span class='link-label'>GitHub</span>
             </a>
-            {
-                link && (
-                    <a href={url} target='_blank'>
-                        <ExternalLink
-                            width={icon_size}
-                            height={icon_size}
-                            class='hover:opacity-60'
-                        />
-                    </a>
-                )
-            }
         </div>
         <div class='flex flex-wrap gap-2 lg:justify-end'>
             {
