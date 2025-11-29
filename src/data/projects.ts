@@ -9,8 +9,7 @@ export interface Project {
 export const projects: Record<string, Project> = {
   samdesk: {
     title: "samdesk",
-    description:
-      "Building samdesk - design and development for real-time threat detection security software.",
+    description: "I am a core member of a small, cross-functional team responsible for designing and building a mission-critical SaaS features from the ground up. Operating in a high-compliance environment (Fortune 500, Defense), I led key design and front-end initiatives to ensure the platform was not only robust and secure but also scalable. My work spanned the full lifecycle: from product, architecture, and design system implementation to performance optimization and automated testing."
     status: "production",
     giturl: "https://github.com/SAMdesk",
     tags: [
