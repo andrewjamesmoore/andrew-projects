@@ -27,7 +27,7 @@ export const projects: Record<string, Project> = {
 
   pyRunnerBackend: {
     title: "py-runner",
-    description: "PyRunner is a full-stack project combining a React + TypeScript frontend with a FastAPI + MongoDB backend. It's a browser-based python editor that allows users to view documentation, explore built-in functions and methods, and run code snippets with no set up.\n\n Under the hood, PyRunner is deployed using a modern, infrastructure-as-code stack. Docker containers encapsulate all components — backend services, database, and reverse proxy — while deployment, networking, and SSL/TLS are managed via Terraform on AWS EC2. A GitHub Actions–driven CI/CD pipeline automates builds and pushes updates via SSH to the server, ensuring continuous deployment with minimal downtime and manual overhead.",
+    description: "PyRunner is a full-stack project combining a React + TypeScript frontend with a FastAPI + MongoDB backend. It's a browser-based python editor that allows users to view documentation, explore built-in functions and methods, and run code snippets with no set up. Under the hood, PyRunner is deployed using a modern, infrastructure-as-code stack.",
     status: "production",
     giturl: "https://gist.github.com/andrewjamesmoore/b3c02cc5b4e92c83f8b49bf349e44641",
     tags: [
