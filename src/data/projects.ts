@@ -9,7 +9,7 @@ export interface Project {
 export const projects: Record<string, Project> = {
   samdesk: {
     title: "samdesk",
-    description: "core member of a small, cross-functional team responsible for designing and building mission-critical SaaS features from the ground up. Operating in a high-compliance environment (Fortune 500, Defense), I lead key design and front-end initiatives to ensure the platform is not only robust and secure but also scalable. My work spanned the full lifecycle: from product, architecture, and design system implementation to performance optimization and automated testing.",
+    description: "core member of a small, cross-functional team responsible for designing and building mission-critical SaaS features from the ground up. Operating in a high-compliance environment (Fortune 500, Defense), I lead key design and front-end initiatives to ensure the platform is not only robust and secure but also scalable. My work spans the full lifecycle: from ux, architecture, and design system implementation to performance optimization and testing.",
     status: "production",
     giturl: "https://github.com/SAMdesk",
     tags: [
@@ -27,7 +27,7 @@ export const projects: Record<string, Project> = {
 
   pyRunnerBackend: {
     title: "py-runner",
-    description: "PyRunner is a full-stack application combining a React + TypeScript frontend with a FastAPI + MongoDB backend to deliver an in-browser Python code editor and execution environment. On the frontend, users can view documentation, explore built-in functions and methods, and run code snippets. The backend serves metadata (docs/examples) and manages code execution and data storage — enabling a seamless, interactive learning and development experience without requiring local setup. Under the hood, PyRunner is deployed using a modern, infrastructure-as-code stack. Docker containers encapsulate all components — backend services, database, and reverse proxy — while deployment, networking, and SSL/TLS are managed via Terraform on AWS EC2. A GitHub Actions–driven CI/CD pipeline automates builds and pushes updates via SSH to the server, ensuring continuous deployment with minimal downtime and manual overhead.",
+    description: "PyRunner is a full-stack project combining a React + TypeScript frontend with a FastAPI + MongoDB backend. It's a browser-based educational editor. On the frontend, users can view documentation, explore built-in functions and methods, and run code snippets. The backend serves metadata (docs/examples) and manages code execution and data storage — enabling a seamless, interactive learning and development experience without the need for local setup.\n Under the hood, PyRunner is deployed using a modern, infrastructure-as-code stack. Docker containers encapsulate all components — backend services, database, and reverse proxy — while deployment, networking, and SSL/TLS are managed via Terraform on AWS EC2.\n A GitHub Actions–driven CI/CD pipeline automates builds and pushes updates via SSH to the server, ensuring continuous deployment with minimal downtime and manual overhead.",
     status: "production",
     giturl: "https://gist.github.com/andrewjamesmoore/b3c02cc5b4e92c83f8b49bf349e44641",
     tags: [
