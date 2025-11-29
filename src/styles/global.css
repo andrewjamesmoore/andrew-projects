@@ -222,10 +222,10 @@
         background-image: 
             repeating-linear-gradient(
                 0deg,
-                rgba(79, 125, 199, 0.06) 0px,
+                rgba(79, 125, 199, 0.04) 0px,
                 transparent 1px,
                 transparent 2px,
-                rgba(79, 125, 199, 0.06) 3px
+                rgba(79, 125, 199, 0.04) 3px
             );
         pointer-events: none;
         z-index: -1;
