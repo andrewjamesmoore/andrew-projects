@@ -48,8 +48,6 @@ npm install
 npm run dev
 ```
 
-Open your browser at [http://localhost:3000](http://localhost:3000) to see the site.
-
 ## Development
 
 | Command         | Description             |
