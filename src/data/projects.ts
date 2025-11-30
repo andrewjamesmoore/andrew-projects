@@ -9,9 +9,9 @@ export interface Project {
 export const projects: Record<string, Project> = {
   samdesk: {
     title: "samdesk",
-    description: "core member of a small, cross-functional team responsible for designing and building mission-critical SaaS features from the ground up. Operating in a high-compliance environment (Fortune 500, Defense), I lead key design and front-end initiatives to ensure the platform is not only robust and secure but also scalable. My work spans the full lifecycle: from ux, architecture, and design system implementation to performance optimization and testing.",
+    description: "Working on a lean engineering team, I contribute to the design and implementation of front-end features in a mission-critical SaaS platform. I own UX and design system decisions while writing and testing production-ready code in React and TypeScript. This hybrid role positions me at the intersection of engineering and product development.",
     status: "production",
-    giturl: "https://github.com/SAMdesk",
+    giturl: "https://gist.github.com/andrewjamesmoore/c25fbb2644ff76e3ec131b8bd746dca3",
     tags: [
       "SaaS",
       "UI Design",
@@ -44,20 +44,11 @@ export const projects: Record<string, Project> = {
     ],
   },
 
-  lastTabChromeExtension: {
-    title: "last-tab-chrome-extension",
-    description:
-      "A simple Chrome extension that lets you use a keybind to return to the last used tab.",
+  andrewProjects: {
+    title: "portfolio-redesign",
+    description: "Portfolio redesign (this site!) stripping away all the fancy graphics and animations for something lightweight and easy to update. The focus here is on updating consistent fields of information, and was a good opportunity to learn more about Golang and GraphQL. While it has since been updated to use local data for cost savings, the backend cleanly exposed typed schemas and resolvers, making it easy to consume and update notes and project data.",
     status: "production",
-    giturl: "https://github.com/andrewjamesmoore/last-tab-chrome-extension",
-    tags: ["Javascript", "Chrome", "Extension"],
-  },
-
-  figgySticks: {
-    title: "figgy-sticks",
-    description: "Figma plugin for using sticky notes in design files.",
-    status: "production",
-    giturl: "https://github.com/andrewjamesmoore/figgy-sticks",
-    tags: ["Javascript", "Figma", "HTML", "CSS", "Extension"],
+    giturl: "https://github.com/andrewjamesmoore/andrew-projects",
+    tags: ["Astro", "DaisyUI", "GraphQL", "Go", "API design", "Typescript", "MongoDB", "Vercel"],
   },
 };

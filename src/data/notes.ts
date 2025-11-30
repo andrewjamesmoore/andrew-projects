@@ -10,7 +10,7 @@ export const notes: Record<string, Note> = {
     title: "shortening-urls-with-node-and-typescript",
     date: "2025-11",
     description:
-      "a simple project to learn more about node express redis and focus less on ui",
+      "a simple project to learn more about node, express and redis",
     url: "https://github.com/andrewjamesmoore/url-shortner",
   },
   encryptedCloudBackup: {
@@ -33,12 +33,16 @@ export const notes: Record<string, Note> = {
       "weekend learning experiment to explore low-level networking in go — specifically using net and tls to create a secure, terminal-based chat server and client.",
     url: "https://github.com/andrewjamesmoore/secure-chat",
   },
-  endToEndDeployment: {
-    title: "end-to-end-deployment",
-    date: "2025-06",
-    description:
-      "notes covering every stage of development and infrastructure — from local builds to production-ready automation",
-    url: "https://gist.github.com/andrewjamesmoore/b3c02cc5b4e92c83f8b49bf349e44641",
+  lastTabExtension: {
+  title: "last-tab-chrome-extension",
+  date: "2025-07",
+  description: "A minimal Chrome extension that lets you switch to your last used tab using a customizable keyboard shortcut. Like Cmd+Tab for your browser tabs.",
+  url: "https://github.com/andrewjamesmoore/last-tab-chrome-extension" }, endToEndDeployment: { title: "end-to-end-deployment", date: "2025-06", description: "notes covering every stage of development and infrastructure — from local builds to production-ready automation", url: "https://gist.github.com/andrewjamesmoore/b3c02cc5b4e92c83f8b49bf349e44641", },
+  figmaPlugin: {
+  title: "figma-sticky-note-plugin",
+  date: "2025-04",
+  description: "Figgy Sticks helps you create vibrant stickies in your Figma design files with ease. A clean UI and handy keyboard shortcuts let you add multiple notes quickly",
+  url: "https://github.com/andrewjamesmoore/figgy-sticks",
   },
   networkingAndCommunication: {
     title: "networking-and-communication",
@@ -54,11 +58,4 @@ export const notes: Record<string, Note> = {
       "exploring state management through a basic authentication flow",
     url: "https://gist.github.com/andrewjamesmoore/0c7034c54a540b0a42cc95dc12a25f14",
   },
-  colourSystems: {
-    title: "colour-systems",
-    date: "2025-01",
-    description:
-      "building a robust color system with hsl, css custom properties, and typescript theming",
-    url: "https://gist.github.com/andrewjamesmoore/4d233b025a91143d609d1a929ab76a98",
-  },
-};
+  };
