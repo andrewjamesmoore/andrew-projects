@@ -1,66 +1,69 @@
-# projects and notes — built with Astro + Tailwind + DaisyUI
+# A frontend for my projects and experiments
 
-This project is a curated collection of projects, experiments, and notes, built with a focus on **rapid development**, **clean design**, and **scalable architecture**.
+The frontend repository for my personal portfolio site. This project is a React + TypeScript application showcasing my projects and documenting my learning and experiments.
 
-It serves both as a personal site and documentation, showcasing real-world design and development projects.
+View the deprecated backend here: [https://github.com/andrewjamesmoore/andrew-projects-api](https://github.com/andrewjamesmoore/andrew-projects-api)
 
-Check out the [completely overkill backend](https://github.com/andrewjamesmoore/andrew-projects-api) that adds real-time projects and notes using Go and Graphql mutations (DEPRECATED: can still view the project however storing content locally for cost savings)
+## Table of contents
 
-> Designed and developed using [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and [DaisyUI](https://daisyui.com/) (I much prefer CSS modules for the record)
+* [About](#about)
+* [Features](#features)
+* [Tech stack](#tech-stack)
+* [Quick start](#quick-start)
+* [Development](#development)
+* [Deployment](#deployment)
+* [License and author](#license-and-author)
 
-### Features
+## About
 
-- **Astro-first** ssr — fast, lightweight, and easy to maintain
-- **Scalable color system** using `HSL`, CSS custom properties, and themes
-- **Componentized layout** built with Tailwind and DaisyUI utility classes
-- **Theme-ready** — supports DaisyUI themes (`cupcake`, `aqua`, `dark`, etc.)
-- Minimal dependencies with optional integration points for future scaling
-- **API** built in Go using GraphQL for notes and projects
+This repository contains the client-side application for my portfolio website. It consumes data from the separate backend repository to display projects, descriptions, and other portfolio content.
 
-### Front End Tech Stack
+## Features
 
-| Tool           | Role                                         |
-| -------------- | -------------------------------------------- |
-| **Astro**      | Static site generator with partial hydration |
-| **Tailwind**   | Utility-first CSS framework                  |
-| **DaisyUI**    | Component and theme layer for Tailwind       |
-| **TypeScript** | Structured data + prop safety                |
+* Interactive project showcase
+* Responsive design for desktop and mobile
+* Dynamic content from backend API
+* Multi-colour theme support
+* Auto-deploys when pushed from main
 
-### Component Examples
+## Tech stack
 
-**`ProjectCard.astro`**
+* Astro (frontend framework)
+* React + TypeScript
+* Tailwind CSS + DaisyUI for UI components
+* Next.js for routing and server-side rendering
+* Vercel (for deployment)
 
-Each project is represented by a strongly-typed Astro component:
+## Quick start
 
-```ts
-import type { Project } from "../data/projects";
-const {
-  title = "string",
-  description = "string",
-  status = "production" as Project["status"],
-  link = false,
-  url = "string",
-  giturl = "string",
-  tags = "string[]",
-} = Astro.props;
+```bash
+# clone the repo
+git clone https://github.com/andrewjamesmoore/andrew-projects.git
+cd andrew-projects
+
+# install dependencies
+npm install
+
+# start dev server
+npm run dev
 ```
 
-The project data is loaded via `src/data/projects.ts` to support autocomplete and enforce structure.
+Open your browser at [http://localhost:3000](http://localhost:3000) to see the site.
 
-```ts
-<div class='flex flex-col gap-2 w-full lg:w-1/2'>
-  <div class='flex items-center gap-2'>
-    <p class='text-md font-bold'>{title}</p>
-    <div class='inline-grid *:[grid-area:1/1]'>
-      <div
-        class={`status rounded-none animate-ping ${currentStatus.color}`}
-      ></div>
-      <div class={`status rounded-none ${currentStatus.color}`}></div>
-    </div>
-    <p class='text-xs text-base-content opacity-30'>{currentStatus.text}</p>
-  </div>
-  <p class='text-sm text-base-content opacity-80'>{description}</p>
-</div>
-```
+## Development
 
-Anywho - essentially a portfolio and as such always a WIP...
+| Command         | Description             |
+| --------------- | ----------------------- |
+| `npm run dev`   | Start local dev server  |
+| `npm run build` | Build production bundle |
+| `npm run start` | Start production server |
+
+## Deployment
+
+The site is deployed via Vercel. Pushes to the `main` branch automatically trigger a production build and deployment.
+
+## License and author
+
+License: MIT
+
+Author: [https://github.com/andrewjamesmoore](https://github.com/andrewjamesmoore)
