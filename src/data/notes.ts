@@ -6,6 +6,13 @@ export interface Note {
 }
 
 export const notes: Record<string, Note> = {
+      brokenAccessControl: {
+    title: "a01-broken-access-control",
+    date: "2025-12",
+    description:
+      "exploting owasp a01 broken access control to gain unauthorized access to sensitive data or functionality",
+    url: "https://gist.github.com/andrewjamesmoore/b3305eb017ad038b0b783c4dcf5e7caa",
+  },
   shorteningUrls: {
     title: "shortening-urls-with-node-and-typescript",
     date: "2025-11",
