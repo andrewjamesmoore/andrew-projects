@@ -10,21 +10,27 @@ const {
 } = Astro.props;
 ---
 
-<article class='articleWrapper'>
-    <div class='articleSide'>
-        <p class='text-xs opacity-50'>{date}</p>
-        <div class='flex gap-2 items-center'>
-            <p class='font-bold'>{title}</p>
-            <FileText width={icon_size} height={icon_size} />
+<div class="card bg-base-100 border border-base-300 lg:card-side h-auto lg:h-48">
+    <div class="card-body flex-1">
+        <div class="flex items-center justify-between gap-2">
+            <span class="badge badge-ghost badge-sm">{date}</span>
         </div>
-        <p class='text-sm opacity-80'>
-            {description}
-        </p>
+        <div class="flex items-center gap-2">
+            <h2 class="card-title text-base">{title}</h2>
+            <FileText width={icon_size} height={icon_size} class="opacity-50" />
+        </div>
+        <p class="text-sm opacity-80 flex-1">{description}</p>
+        <div class="card-actions justify-end mt-auto">
+            <a
+                href={url}
+                target="_blank"
+                class="btn btn-outline btn-sm gap-2"
+                aria-label="Read notes"
+                title="Read notes"
+            >
+                <ExternalLink width={icon_size} height={icon_size} />
+                read notes
+            </a>
+        </div>
     </div>
-    <a href={url} target='_blank' class='pt-4 lg: pt-0'>
-        <button class='btn btn-outline rounded-none font-normal'>
-            <ExternalLink width={icon_size} height={icon_size} />
-            read notes
-        </button></a
-    >
-</article>
+</div>

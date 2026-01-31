@@ -1,0 +1,83 @@
+---
+// Material Design 3 inspired hero section with two tiles using DaisyUI
+---
+
+<section class="w-full mb-12 mx-auto" style="max-width: 1768px;">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-2">
+        <!-- Left tile: Text content -->
+        <div class="hero-tile">
+            <div class="hero-content">
+                <h1 class="heading-1">Full Stack Product Engineering</h1>
+                <p class="body-text">
+                    I'm Andrew, a senior product designer working on complex,
+                    high-stakes SaaS products. I work across the full product
+                    lifecycle including research, sketching and prototyping, and
+                    shipping production-ready code in Typescript and React.
+                </p>
+            </div>
+        </div>
+
+        <!-- Right tile: Image -->
+        <div class="hero-tile hero-tile-image">
+            <img
+                src="https://placehold.co/800x600/6442d6/ffffff"
+                alt="Material Design illustration"
+                class="w-full h-full object-cover"
+            />
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-tile {
+        border-radius: 28px;
+        overflow: hidden;
+        background: rgba(100, 66, 214, 0.08);
+        min-height: 300px;
+    }
+
+    @media (min-width: 768px) {
+        .hero-tile {
+            min-height: 400px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hero-tile {
+            min-height: 460px;
+        }
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem;
+        height: 100%;
+        align-items: start;
+    }
+
+    @media (min-width: 768px) {
+        .hero-content {
+            padding: 3rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hero-content {
+            padding: 4rem;
+        }
+    }
+
+    .hero-tile-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        background: linear-gradient(
+            135deg,
+            var(--p) 0%,
+            color-mix(in srgb, var(--p) 80%, white) 100%
+        );
+    }
+</style>

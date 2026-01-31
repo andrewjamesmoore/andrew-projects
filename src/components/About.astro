@@ -1,22 +1,42 @@
-<section class='flex flex-col items-start'>
-    <p class='sectionTitle'>About</p>
-    <article class='articleWrapper'>
-        <div class='articleSide'>
-            <div class='flex flex-col gap-4 text-sm opacity-80'>
-                <p>
-                    I'm a designer and developer building performant,
-                    accessible, and scalable software. I specialize in
-                    UX, UI architecture, and component-driven design
-                    systems.
-                </p>
+---
+import ThemeDice from "./ThemeDice.astro";
+---
 
+<section class="flex flex-col items-start">
+    <p class="heading-2">About</p>
+    <article>
+        <div>
+            <div class="flex flex-col gap-4 body-text opacity-80">
                 <p>
-                    I’ve recently been diving deeper into security and
-                    networking. I enjoy working across disciplines and bridging
-                    the gap between design and engineering. Always learning,
-                    always building.
+                    Working with the team at samdesk I am currently building a
+                    leading real-time crisis alerting platform. This is a
+                    high-performance tool used by security analysts, defense
+                    teams, and government organizations to monitor and respond
+                    to global threats. My work is about understanding how
+                    analysts operate under pressure, how they triage incoming
+                    alerts, assess threat severity, and coordinate responses.
+                    And then designing systems that make those workflows faster
+                    and more reliable.
                 </p>
             </div>
+        </div>
+
+        <div class="flex items-end gap-4 pt-4">
+            <a
+                href="https://github.com/andrewjamesmoore"
+                target="_blank"
+                class="linkText"
+                data-text="github"
+                >github
+            </a>
+            <a
+                href="mailto:hello@andrewjamesmoore.com"
+                target="_blank"
+                class="linkText"
+                data-text="email"
+                >email
+            </a>
+            <ThemeDice />
         </div>
     </article>
 </section>

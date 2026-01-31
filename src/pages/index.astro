@@ -2,15 +2,16 @@
 import About from "../components/About.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import Notes from "../components/Notes.astro";
-import Projects from "../components/Projects.astro";
+import HeroSection from "../components/HeroSection.astro";
+import WorkTabs from "../components/WorkTabs.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-    <Header />
-    <Projects />
-    <Notes />
-    <About />
-    <Footer />
+    <HeroSection />
+    <div class="w-full mx-auto flex flex-col gap-12" style="max-width: 840px;">
+        <About />
+        <WorkTabs />
+        <Footer />
+    </div>
 </Layout>
