@@ -1,0 +1,222 @@
+---
+import Layout from './Layout.astro';
+import { ArrowLeft } from 'lucide-react';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+const defaultImage = "https://placehold.co/800x600/6442d6/ffffff";
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="w-full mb-12 mx-auto" style="max-width: 1768px;">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-2">
+      <!-- Left tile: Title and description -->
+      <div class="hero-tile">
+        <div class="hero-content">
+          <h1 class="heading-1">{title}</h1>
+          {description && (
+            <p class="body-text">{description}</p>
+          )}
+        </div>
+      </div>
+
+      <!-- Right tile: Image -->
+      <div class="hero-tile hero-tile-image">
+        <img
+          src={image || defaultImage}
+          alt={title}
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <div class="mx-auto" style="max-width: 840px;">
+    <!-- Back Button -->
+    <div class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 btn btn-ghost btn-sm">
+        <ArrowLeft size={16} />
+        Back to Home
+      </a>
+    </div>
+
+    <!-- Markdown Content -->
+    <article class="prose prose-lg max-w-none markdown-content">
+      <slot />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .hero-tile {
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(100, 66, 214, 0.08);
+    min-height: 300px;
+  }
+
+  @media (min-width: 768px) {
+    .hero-tile {
+      min-height: 400px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-tile {
+      min-height: 460px;
+    }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    height: 100%;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .hero-content {
+      padding: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-content {
+      padding: 4rem;
+    }
+  }
+
+  .hero-tile-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: linear-gradient(
+      135deg,
+      var(--p) 0%,
+      color-mix(in srgb, var(--p) 80%, white) 100%
+    );
+  }
+
+  /* Markdown Content Styling - Uses DaisyUI theme variables */
+  .markdown-content {
+    color: hsl(var(--bc));
+    line-height: 1.7;
+  }
+
+  .markdown-content :global(h1),
+  .markdown-content :global(h2),
+  .markdown-content :global(h3),
+  .markdown-content :global(h4),
+  .markdown-content :global(h5),
+  .markdown-content :global(h6) {
+    color: hsl(var(--bc));
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .markdown-content :global(h2) {
+    font-size: 2rem;
+    border-bottom: 1px solid hsl(var(--bc) / 0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  .markdown-content :global(h3) {
+    font-size: 1.5rem;
+  }
+
+  .markdown-content :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown-content :global(a) {
+    color: hsl(var(--p));
+    text-decoration: underline;
+    transition: opacity 0.2s;
+  }
+
+  .markdown-content :global(a:hover) {
+    opacity: 0.8;
+  }
+
+  .markdown-content :global(code) {
+    background: hsl(var(--b3));
+    color: hsl(var(--bc));
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: 'Google Sans Code', monospace;
+    font-size: 0.9em;
+  }
+
+  .markdown-content :global(pre) {
+    background: hsl(var(--b3));
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .markdown-content :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+
+  .markdown-content :global(ul),
+  .markdown-content :global(ol) {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-content :global(blockquote) {
+    border-left: 4px solid hsl(var(--p));
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: hsl(var(--bc) / 0.8);
+  }
+
+  .markdown-content :global(img) {
+    border-radius: 0.5rem;
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+  }
+
+  .markdown-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+
+  .markdown-content :global(th),
+  .markdown-content :global(td) {
+    border: 1px solid hsl(var(--bc) / 0.2);
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  .markdown-content :global(th) {
+    background: hsl(var(--b3));
+    font-weight: 600;
+  }
+
+  .markdown-content :global(hr) {
+    border: none;
+    border-top: 1px solid hsl(var(--bc) / 0.2);
+    margin: 2rem 0;
+  }
+</style>

@@ -6,14 +6,35 @@ export interface Project {
   tags: string[];
 }
 
+
+
 export const projects: Record<string, Project> = {
+
+      darkweb: {
+    title: "Turning feature flags into growth levers",
+    description:
+      "How surfacing Darkweb Monitoring and Web Alerts inside the product increased discoverability, interest, and sales",
+    status: "production",
+    giturl: "/projects/growth-levers",
+    tags: [
+      "SaaS",
+      "UI Design",
+      "UX",
+      "React",
+      "Typescript",
+      "Jest",
+      "Vercel",
+      "Jira",
+      "Agile",
+    ],
+  },
+
   samdesk: {
     title: "Colour System: Quarks",
     description:
       "Developing a robust colour system in typescript and css for the Quarks design system",
     status: "production",
-    giturl:
-      "https://gist.github.com/andrewjamesmoore/c25fbb2644ff76e3ec131b8bd746dca3",
+    giturl: "/projects/colour-system-quarks",
     tags: [
       "SaaS",
       "UI Design",

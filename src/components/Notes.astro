@@ -1,10 +1,11 @@
 ---
 import NoteCard from "./NoteCard.astro";
 import { notes } from "../data/notes";
+import { card_gap } from "../utils/constants";
 
 const allNotes = Object.values(notes);
 ---
 
-<div class="flex flex-col w-full gap-6">
-    {allNotes.map((note) => <NoteCard {...note} />)}
+<div class="flex flex-col w-full" style={`gap: ${card_gap};`}>
+    {allNotes.map((note) => <NoteCard title={note.title} description={note.description} contentPath={note.contentPath} date={note.date} />)}
 </div>

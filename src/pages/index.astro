@@ -5,13 +5,89 @@ import Header from "../components/Header.astro";
 import HeroSection from "../components/HeroSection.astro";
 import WorkTabs from "../components/WorkTabs.astro";
 import Layout from "../layouts/Layout.astro";
+import ProjectModal from "../components/ProjectModal.astro";
+import { getEntry } from 'astro:content';
+import { projects } from "../data/projects";
+import { notes } from "../data/notes";
+
+// Get all projects with internal links
+const projectEntries = Object.entries(projects);
+const internalProjects = projectEntries.filter(([_, project]) => project.giturl.startsWith('/'));
+
+// Load content for internal projects
+const projectsWithContent = await Promise.all(
+  internalProjects.map(async ([key, project]) => {
+    const contentSlug = project.giturl.replace('/projects/', '');
+    const entry = await getEntry('pages', contentSlug);
+    const { Content } = await entry.render();
+    return { key, project, entry, Content };
+  })
+);
+
+// Get all notes
+const noteEntries = Object.entries(notes);
+
+// Load content for notes
+const notesWithContent = await Promise.all(
+  noteEntries.map(async ([key, note]) => {
+    const contentSlug = note.contentPath.replace('/notes/', '');
+    const entry = await getEntry('pages', `notes/${contentSlug}`);
+    const { Content } = await entry.render();
+    return { key, note, entry, Content };
+  })
+);
 ---
 
 <Layout>
     <HeroSection />
-    <div class="w-full mx-auto flex flex-col gap-12" style="max-width: 840px;">
+    <div class="w-full mx-auto flex flex-col gap-12" style="max-width: 940px;">
         <About />
         <WorkTabs />
         <Footer />
     </div>
+
+    <!-- Project Modals -->
+    {projectsWithContent.map(({ project, entry, Content }, index) => {
+      const modalId = project.giturl.replace(/\//g, '-');
+      const prevProject = projectsWithContent[index - 1];
+      const nextProject = projectsWithContent[index + 1];
+      const prevId = prevProject ? prevProject.project.giturl.replace(/\//g, '-') : undefined;
+      const nextId = nextProject ? nextProject.project.giturl.replace(/\//g, '-') : undefined;
+
+      return (
+        <ProjectModal
+          id={modalId}
+          title={entry.data.title}
+          description={entry.data.description}
+          image={entry.data.image}
+          prevId={prevId}
+          nextId={nextId}
+        >
+          <Content />
+        </ProjectModal>
+      );
+    })}
+
+    <!-- Note Modals -->
+    {notesWithContent.map(({ note, entry, Content }, index) => {
+      const modalId = note.contentPath.replace(/\//g, '-');
+      const prevNote = notesWithContent[index - 1];
+      const nextNote = notesWithContent[index + 1];
+      const prevId = prevNote ? prevNote.note.contentPath.replace(/\//g, '-') : undefined;
+      const nextId = nextNote ? nextNote.note.contentPath.replace(/\//g, '-') : undefined;
+
+      return (
+        <ProjectModal
+          id={modalId}
+          title={entry.data.title}
+          description={entry.data.description}
+          image={entry.data.image}
+          prevId={prevId}
+          nextId={nextId}
+          externalUrl={note.externalUrl}
+        >
+          <Content />
+        </ProjectModal>
+      );
+    })}
 </Layout>

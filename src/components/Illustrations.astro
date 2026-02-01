@@ -1,0 +1,74 @@
+---
+import { border_radius, card_gap } from "../utils/constants";
+
+const illustrations = [
+    {
+        id: 1,
+        image: "https://placehold.co/800x500/6442d6/ffffff",
+        alt: "Illustration 1",
+    },
+    {
+        id: 2,
+        image: "https://placehold.co/800x500/6442d6/ffffff",
+        alt: "Illustration 2",
+    },
+    {
+        id: 3,
+        image: "https://placehold.co/800x500/6442d6/ffffff",
+        alt: "Illustration 3",
+    },
+    {
+        id: 4,
+        image: "https://placehold.co/800x500/6442d6/ffffff",
+        alt: "Illustration 4",
+    },
+];
+---
+
+<div class="illustrations-grid">
+    {
+        illustrations.map((illustration) => (
+            <div class="illustration-card">
+                <img
+                    src={illustration.image}
+                    alt={illustration.alt}
+                    class="illustration-image"
+                />
+            </div>
+        ))
+    }
+</div>
+
+<style define:vars={{ border_radius, card_gap }}>
+    .illustrations-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--card_gap);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+        .illustrations-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .illustration-card {
+        border-radius: var(--border_radius);
+        overflow: hidden;
+        background: rgba(100, 66, 214, 0.08);
+        transition: transform 0.2s ease;
+        cursor: pointer;
+    }
+
+    .illustration-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .illustration-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+</style>

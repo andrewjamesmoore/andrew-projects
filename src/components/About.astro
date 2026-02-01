@@ -1,15 +1,16 @@
 ---
+import { EnvelopeClosed, GitHubLogo } from "@astropub/icons";
 import ThemeDice from "./ThemeDice.astro";
 ---
 
-<section class="flex flex-col items-start">
+<section class="flex flex-col items-start gap-4">
     <p class="heading-2">About</p>
     <article>
         <div>
             <div class="flex flex-col gap-4 body-text opacity-80">
                 <p>
-                    Working with the team at samdesk I am currently building a
-                    leading real-time crisis alerting platform. This is a
+                    Working with the team at samdesk I am building a leading
+                    real-time crisis alerting platform. This is a
                     high-performance tool used by security analysts, defense
                     teams, and government organizations to monitor and respond
                     to global threats. My work is about understanding how
@@ -20,23 +21,28 @@ import ThemeDice from "./ThemeDice.astro";
                 </p>
             </div>
         </div>
-
-        <div class="flex items-end gap-4 pt-4">
+        <div class="flex items-center gap-4 pt-6">
             <a
                 href="https://github.com/andrewjamesmoore"
                 target="_blank"
-                class="linkText"
-                data-text="github"
-                >github
+                class="btn btn-circle btn-ghost"
+                title="GitHub"
+            >
+                <GitHubLogo size={20} />
             </a>
+
             <a
                 href="mailto:hello@andrewjamesmoore.com"
                 target="_blank"
-                class="linkText"
-                data-text="email"
-                >email
+                class="btn btn-circle btn-ghost"
+                title="Email"
+            >
+                <EnvelopeClosed size={18} />
             </a>
-            <ThemeDice />
+            <!-- 
+            <div class="btn btn-circle btn-ghost">
+                <ThemeDice />
+            </div> -->
         </div>
     </article>
 </section>

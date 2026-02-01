@@ -1,16 +1,17 @@
 ---
-import ExternalLink from "@astropub/icons/ExternalLink";
 import FileText from "@astropub/icons/FileText";
-import { icon_size } from "../utils/constants";
+import { icon_size, border_radius } from "../utils/constants";
 const {
     title = "string",
     description = "string",
-    url = "string",
+    contentPath = "string",
     date = "string",
 } = Astro.props;
+
+const modalId = contentPath.replace(/\//g, '-');
 ---
 
-<div class="card bg-base-100 border border-base-300 lg:card-side h-auto lg:h-48">
+<div class="card bg-base-100 border border-base-300 lg:card-side h-auto lg:h-48" style={`border-radius: ${border_radius};`}>
     <div class="card-body flex-1">
         <div class="flex items-center justify-between gap-2">
             <span class="badge badge-ghost badge-sm">{date}</span>
@@ -21,16 +22,15 @@ const {
         </div>
         <p class="text-sm opacity-80 flex-1">{description}</p>
         <div class="card-actions justify-end mt-auto">
-            <a
-                href={url}
-                target="_blank"
+            <button
+                onclick={`document.getElementById('modal-${modalId}').showModal()`}
                 class="btn btn-outline btn-sm gap-2"
                 aria-label="Read notes"
                 title="Read notes"
             >
-                <ExternalLink width={icon_size} height={icon_size} />
+                <FileText width={icon_size} height={icon_size} />
                 read notes
-            </a>
+            </button>
         </div>
     </div>
 </div>

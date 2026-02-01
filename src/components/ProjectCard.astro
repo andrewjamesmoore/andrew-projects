@@ -1,8 +1,10 @@
 ---
 import GitHubLogo from "@astropub/icons/GitHubLogo";
-import { icon_size } from "../utils/constants";
-import { getStatusConfig } from "../utils/getStatusConfig";
+import { FileText } from "lucide-react";
 import type { Project } from "../data/projects";
+import { border_radius, icon_size } from "../utils/constants";
+import { getStatusConfig } from "../utils/getStatusConfig";
+
 const {
     title = "string",
     description = "string",
@@ -12,12 +14,15 @@ const {
 } = Astro.props;
 
 const currentStatus = getStatusConfig(status);
+const isInternalLink = giturl.startsWith("/");
 ---
 
 <div
-    class="card bg-base-100 border border-base-300 lg:card-side h-auto lg:h-72"
+    class="card bg-base-100 border border-base-300 lg:card-side h-auto lg:h-72 project-card"
 >
-    <figure class="bg-base-200 w-full h-64 lg:w-80 lg:h-full shrink-0">
+    <figure
+        class="bg-base-200 w-full h-64 lg:w-80 lg:h-full shrink-0 project-figure"
+    >
         <div
             class="flex items-center justify-center w-full h-full text-base-content/30"
         >
@@ -51,24 +56,53 @@ const currentStatus = getStatusConfig(status);
             <span class="badge badge-ghost badge-sm">{currentStatus.text}</span>
         </div>
         <p class="text-sm opacity-80 flex-1">{description}</p>
-        <div class="card-actions justify-between items-center mt-auto">
+        <div class="card-actions gap-8 items-center mt-auto">
             <div class="flex flex-wrap gap-2">
                 {
                     tags.map((tag: string) => (
-                        <div class="badge badge-outline badge-sm">{tag}</div>
+                        <div class="badge badge-outline badge-md">{tag}</div>
                     ))
                 }
             </div>
-            <a
-                href={giturl}
-                target="_blank"
-                class="btn btn-ghost btn-sm gap-2"
-                aria-label="View source code on GitHub"
-                title="View source code on GitHub"
-            >
-                <GitHubLogo width={icon_size} height={icon_size} />
-                GitHub
-            </a>
+            {
+                isInternalLink ? (
+                    <button
+                        onclick={`document.getElementById('modal-${giturl.replace(/\//g, "-")}').showModal()`}
+                        class="btn gap-2"
+                        aria-label="Read more about this project"
+                        title="Read more about this project"
+                    >
+                        Read More
+                    </button>
+                ) : (
+                    <a
+                        href={giturl}
+                        target="_blank"
+                        class="btn gap-2"
+                        aria-label="View source code on GitHub"
+                        title="View source code on GitHub"
+                    >
+                        <GitHubLogo width={icon_size} height={icon_size} />
+                        GitHub
+                    </a>
+                )
+            }
         </div>
     </div>
 </div>
+
+<style define:vars={{ border_radius }}>
+    .project-card {
+        border-radius: var(--border_radius);
+    }
+
+    .project-figure {
+        border-radius: var(--border_radius) var(--border_radius) 0 0;
+    }
+
+    @media (min-width: 1024px) {
+        .project-figure {
+            border-radius: var(--border_radius) 0 0 var(--border_radius);
+        }
+    }
+</style>

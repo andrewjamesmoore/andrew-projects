@@ -1,0 +1,252 @@
+---
+title: "Turning feature flags into growth levers"
+description: "How surfacing Darkweb Monitoring inside the product increased discoverability, interest, and sales"
+image: "https://placehold.co/1200x800/EEE/999?text=Feature+Discovery"
+date: "June 2024"
+---
+
+<div class="space-y-8 max-w-3xl">
+  {/* Role & Meta */}
+  <div class="border-b border-base-300 pb-6">
+    <div class="flex flex-wrap gap-2 mb-3">
+      <span class="badge badge-sm badge-outline">Lead Designer</span>
+      <span class="badge badge-sm badge-outline">Frontend Developer</span>
+      <span class="badge badge-sm badge-outline">2021 - Present</span>
+    </div>
+    <div class="flex flex-wrap gap-2 text-sm opacity-60">
+      <span>React</span>
+      <span>•</span>
+      <span>TypeScript</span>
+      <span>•</span>
+      <span>GraphQL</span>
+      <span>•</span>
+      <span>Enterprise SaaS</span>
+    </div>
+  </div>
+
+  {/* TL;DR */}
+  <div class="border-l-2 border-base-300 pl-6">
+    <div class="text-xs uppercase tracking-wide opacity-50 mb-2">TL;DR</div>
+    <p class="body-text">
+      Two high‑value features — Darkweb Monitoring and Web Alerts — were effectively invisible unless Sales manually enabled them. By redesigning how feature flags behaved in‑product (from hidden to discoverable), I turned gated functionality into a self‑serve growth surface.
+    </p>
+  </div>
+
+  {/* Context */}
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">Context</h2>
+    <p class="body-text mb-4">
+      The product revolves around Streams — curated feeds of incidents, alerts, and signals relevant to customer operations.
+    </p>
+    <p class="body-text mb-4">
+      Two premium features existed: Darkweb Monitoring (surfaces early indicators of threats from darkweb sources) and Web Alerts (monitors open web and social platforms for keyword‑based signals).
+    </p>
+    <p class="body-text mb-4">
+      Both features were technically complete and valuable to customers, but hidden behind feature flags. If the flag was off, the UI simply removed the feature.
+    </p>
+    <p class="body-text">
+      <strong>Outcome:</strong> Users didn't know these capabilities existed unless Sales told them.
+    </p>
+  </div>
+
+  <div class="w-full">
+    <img src="https://placehold.co/1200x600/F5F5F5/999?text=Streams+Dashboard" alt="Streams Dashboard" class="w-full rounded" />
+    <p class="text-xs opacity-60 mt-2">The Streams interface where users monitor incidents and alerts</p>
+  </div>
+
+  {/* The Problem */}
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">The Problem</h2>
+    <p class="body-text mb-4">
+      This created three compounding issues:
+    </p>
+    <div class="space-y-4 ml-4">
+      <div>
+        <p class="body-text"><strong>Zero discoverability</strong></p>
+        <p class="body-text text-sm opacity-70">Users couldn't explore, evaluate, or even see the feature.</p>
+      </div>
+      <div>
+        <p class="body-text"><strong>Sales‑only enablement</strong></p>
+        <p class="body-text text-sm opacity-70">Value discovery happened outside the product, increasing friction and cycle time.</p>
+      </div>
+      <div>
+        <p class="body-text"><strong>Missed intent signals</strong></p>
+        <p class="body-text text-sm opacity-70">We had no way to tell which customers were interested unless they explicitly asked.</p>
+      </div>
+    </div>
+    <p class="body-text mt-6">
+      This wasn't a UX problem alone — it was a growth and systems design problem.
+    </p>
+  </div>
+
+  {/* Insight */}
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">Insight</h2>
+    <p class="body-text mb-4">
+      Feature flags were being used as kill switches. They could instead be used as contextual capability signals.
+    </p>
+    <div class="border-l-2 border-base-300 pl-6 my-6">
+      <p class="text-lg italic">
+        "If a feature is valuable enough to sell, it should be visible enough to want."
+      </p>
+    </div>
+    <p class="body-text mb-4">
+      Rather than removing features when disabled, we could:
+    </p>
+    <ul class="list-disc list-inside space-y-2 ml-4 body-text">
+      <li>Keep them visible</li>
+      <li>Explain their value in context</li>
+      <li>Provide a clear next action</li>
+    </ul>
+  </div>
+
+  {/* Design Principle */}
+  <div class="bg-base-200 p-8 rounded">
+    <div class="text-xs uppercase tracking-wide opacity-50 mb-2">Design Principle</div>
+    <h3 class="text-xl font-semibold">
+      Never hide value — gate access, not awareness.
+    </h3>
+    <p class="body-text text-sm mt-2 opacity-70">This guided every decision that followed.</p>
+  </div>
+
+  <div class="w-full">
+    <img src="https://placehold.co/1200x600/F5F5F5/999?text=Before+and+After" alt="Feature flag behavior comparison" class="w-full rounded" />
+    <p class="text-xs opacity-60 mt-2">How the feature flag behavior changed from hidden to discoverable</p>
+  </div>
+
+  {/* Solution Overview */}
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">Solution Overview</h2>
+    <p class="body-text mb-4">
+      I redesigned how flagged features behave inside Streams. Instead of feature flags turning features off completely, they now control the state:
+    </p>
+    <div class="space-y-4 ml-4">
+      <div>
+        <p class="body-text"><strong>Previous behavior</strong></p>
+        <p class="body-text text-sm opacity-70">Feature flag OFF → feature disappears</p>
+      </div>
+      <div>
+        <p class="body-text"><strong>New behavior</strong></p>
+        <p class="body-text text-sm opacity-70">Feature flag OFF → feature visible with contextual empty state, clear explanation of value, and explicit CTA to enable or learn more</p>
+      </div>
+    </div>
+    <p class="body-text mt-6">
+      This pattern was applied consistently across Darkweb Alerts and Web Alerts.
+    </p>
+  </div>
+
+  {/* Darkweb Monitoring */}
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">Darkweb Monitoring</h2>
+    <p class="body-text mb-4">
+      Previously, the entire Darkweb Alerts tab existed only if Sales enabled the flag. Users browsing Streams never saw it.
+    </p>
+    <p class="body-text mb-4">
+      In the new implementation, the Darkweb Alerts tab is always visible. If disabled, users see a focused empty state with a clear value proposition and CTA to contact support or enable access.
+    </p>
+    <div class="w-full my-6">
+      <img src="https://placehold.co/1200x800/F5F5F5/999?text=Darkweb+Empty+State" alt="Darkweb empty state" class="w-full rounded" />
+      <p class="text-xs opacity-60 mt-2">The empty state users see when Darkweb Monitoring is not enabled</p>
+    </div>
+    <p class="body-text mb-4">
+      <strong>Why this worked:</strong>
+    </p>
+    <ul class="list-disc list-inside space-y-2 ml-4 body-text text-sm opacity-80">
+      <li>Users encountered the feature naturally while exploring Streams</li>
+      <li>The value was explained before a sales conversation</li>
+      <li>The CTA captured high‑intent interest</li>
+    </ul>
+  </div>
+
+  {/* Web Alerts */}
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">Web Alerts</h2>
+    <p class="body-text mb-4">
+      Web Alerts suffered from the same problem — powerful, invisible, and sales‑dependent.
+    </p>
+    <p class="body-text mb-4">
+      I implemented a shared hook that detects feature flag state and renders either the full feature experience or a designed empty state with contextual messaging. This avoided duplicate logic, diverging UX patterns, and feature‑specific hacks.
+    </p>
+    <div class="bg-base-200 p-4 rounded font-mono text-sm my-6">
+      <pre>const useFeatureGate = (flag) =&gt; &#123;
+  const isEnabled = checkFlag(flag)
+  return isEnabled
+    ? &lt;FullFeature /&gt;
+    : &lt;EmptyState /&gt;
+&#125;</pre>
+    </div>
+    <p class="body-text">
+      The result was a scalable pattern for future gated features.
+    </p>
+  </div>
+
+  {/* Why This Was More Than UI */}
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">Why This Was More Than UI</h2>
+    <p class="body-text mb-4">
+      This work intentionally sat at the intersection of multiple disciplines:
+    </p>
+    <div class="space-y-3 ml-4">
+      <div>
+        <p class="body-text"><strong>UX design</strong></p>
+        <p class="body-text text-sm opacity-70">Empty states, messaging, hierarchy</p>
+      </div>
+      <div>
+        <p class="body-text"><strong>Product strategy</strong></p>
+        <p class="body-text text-sm opacity-70">Self‑serve discovery vs sales‑only gating</p>
+      </div>
+      <div>
+        <p class="body-text"><strong>Engineering</strong></p>
+        <p class="body-text text-sm opacity-70">Hooks, feature flag architecture, conditional rendering</p>
+      </div>
+      <div>
+        <p class="body-text"><strong>Revenue enablement</strong></p>
+        <p class="body-text text-sm opacity-70">Surfacing premium value at the moment of relevance</p>
+      </div>
+    </div>
+    <p class="body-text mt-6">
+      I designed the system and coded the implementation.
+    </p>
+  </div>
+
+  {/* Impact */}
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">Impact</h2>
+    <p class="body-text mb-4">
+      While exact numbers are confidential, outcomes included:
+    </p>
+    <ul class="list-disc list-inside space-y-2 ml-4 body-text">
+      <li>Increased engagement with Darkweb Monitoring</li>
+      <li>Higher awareness of Web Alerts across existing customers</li>
+      <li>Clearer intent signals for Sales</li>
+      <li>Shorter time‑to‑value in sales conversations</li>
+    </ul>
+    <p class="body-text mt-6">
+      Most importantly: customers began asking for the feature themselves.
+    </p>
+  </div>
+
+  {/* What This Demonstrates */}
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">What This Demonstrates</h2>
+    <ul class="list-disc list-inside space-y-2 ml-4 body-text">
+      <li>I don't treat feature flags as purely technical concerns</li>
+      <li>I look for growth leverage inside existing product surfaces</li>
+      <li>I design systems, not just screens</li>
+      <li>I'm comfortable shipping design decisions end‑to‑end</li>
+    </ul>
+  </div>
+
+  {/* Closing */}
+  <div class="border-t border-base-300 pt-8">
+    <p class="text-lg mb-4">
+      This wasn't about adding a new feature.
+    </p>
+    <p class="text-lg mb-4">
+      It was about <strong>letting valuable features speak for themselves</strong>.
+    </p>
+    <p class="body-text opacity-70">
+      When users can see what's possible, selling becomes a lot easier.
+    </p>
+  </div>
+</div>

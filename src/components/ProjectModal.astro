@@ -1,0 +1,258 @@
+---
+import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+
+interface Props {
+  id: string;
+  title: string;
+  description?: string;
+  image?: string;
+  prevId?: string;
+  nextId?: string;
+  externalUrl?: string;
+}
+
+const { id, title, description, image, prevId, nextId, externalUrl } = Astro.props;
+const defaultImage = "https://placehold.co/800x600/6442d6/ffffff";
+---
+
+<dialog id={`modal-${id}`} class="modal">
+  <div class="modal-box max-w-6xl w-full h-[90vh] p-0 flex flex-col">
+    <!-- Top Bar: Title and Close -->
+    <div class="flex justify-between items-center px-6 py-4 border-b border-base-300 shrink-0 bg-base-100">
+      <h2 class="text-lg font-semibold text-base-content">{title}</h2>
+      <button
+        class="btn btn-ghost btn-sm btn-square"
+        onclick={`document.getElementById('modal-${id}').close()`}
+        title="Close"
+      >
+        <X size={20} />
+      </button>
+    </div>
+
+    <!-- Scrollable Content Area -->
+    <div class="flex-1 overflow-y-auto" id={`modal-content-${id}`}>
+      <!-- Image -->
+      {image && (
+        <div class="w-full">
+          <img
+            src={image || defaultImage}
+            alt={title}
+            class="w-full h-auto object-cover"
+          />
+        </div>
+      )}
+
+      <!-- Markdown Content -->
+      <div class="px-8 py-6 pb-24">
+        <article class="prose prose-lg max-w-none markdown-content">
+          <slot />
+        </article>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation Bar (Sticky) -->
+    <div class="navigation-bar">
+      <div>
+        {prevId ? (
+          <button
+            class="btn btn-primary btn-sm gap-2"
+            onclick={`document.getElementById('modal-${id}').close(); setTimeout(() => document.getElementById('modal-${prevId}').showModal(), 100)`}
+            title="Previous"
+          >
+            <ChevronLeft size={16} />
+            Previous
+          </button>
+        ) : (
+          <div class="btn btn-sm gap-2 btn-disabled">
+            <ChevronLeft size={16} />
+            Previous
+          </div>
+        )}
+      </div>
+      <div class="flex gap-2">
+        {externalUrl && (
+          <a
+            href={externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-ghost btn-sm gap-2"
+            title="View external link"
+          >
+            <ExternalLink size={16} />
+            View Source
+          </a>
+        )}
+        {nextId ? (
+          <button
+            class="btn btn-primary btn-sm gap-2"
+            onclick={`document.getElementById('modal-${id}').close(); setTimeout(() => document.getElementById('modal-${nextId}').showModal(), 100)`}
+            title="Next"
+          >
+            Next
+            <ChevronRight size={16} />
+          </button>
+        ) : (
+          <div class="btn btn-sm gap-2 btn-disabled">
+            Next
+            <ChevronRight size={16} />
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <!-- Backdrop -->
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<script define:vars={{ id }}>
+  // Reset scroll position when modal opens
+  const modal = document.getElementById(`modal-${id}`);
+  const content = document.getElementById(`modal-content-${id}`);
+
+  if (modal && content) {
+    // Watch for the open attribute to detect when modal is shown
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'open' && modal.hasAttribute('open')) {
+          content.scrollTop = 0;
+        }
+      });
+    });
+
+    observer.observe(modal, { attributes: true });
+  }
+</script>
+
+<style>
+  /* Bottom Navigation Bar - Sticky */
+  .navigation-bar {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: hsl(var(--b2));
+    border-top: 1px solid hsl(var(--bc) / 0.2);
+    z-index: 10;
+    box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  /* Markdown Content Styling - Uses DaisyUI theme variables */
+  .markdown-content {
+    color: hsl(var(--bc));
+    line-height: 1.7;
+  }
+
+  .markdown-content :global(h1),
+  .markdown-content :global(h2),
+  .markdown-content :global(h3),
+  .markdown-content :global(h4),
+  .markdown-content :global(h5),
+  .markdown-content :global(h6) {
+    color: hsl(var(--bc));
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .markdown-content :global(h2) {
+    font-size: 2rem;
+    border-bottom: 1px solid hsl(var(--bc) / 0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  .markdown-content :global(h3) {
+    font-size: 1.5rem;
+  }
+
+  .markdown-content :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown-content :global(a) {
+    color: hsl(var(--p));
+    text-decoration: underline;
+    transition: opacity 0.2s;
+  }
+
+  .markdown-content :global(a:hover) {
+    opacity: 0.8;
+  }
+
+  .markdown-content :global(code) {
+    background: hsl(var(--b3));
+    color: hsl(var(--bc));
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: 'Google Sans Code', monospace;
+    font-size: 0.9em;
+  }
+
+  .markdown-content :global(pre) {
+    background: hsl(var(--b3));
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .markdown-content :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+
+  .markdown-content :global(ul),
+  .markdown-content :global(ol) {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-content :global(blockquote) {
+    border-left: 4px solid hsl(var(--p));
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: hsl(var(--bc) / 0.8);
+  }
+
+  .markdown-content :global(img) {
+    border-radius: 0.5rem;
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+  }
+
+  .markdown-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+
+  .markdown-content :global(th),
+  .markdown-content :global(td) {
+    border: 1px solid hsl(var(--bc) / 0.2);
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  .markdown-content :global(th) {
+    background: hsl(var(--b3));
+    font-weight: 600;
+  }
+
+  .markdown-content :global(hr) {
+    border: none;
+    border-top: 1px solid hsl(var(--bc) / 0.2);
+    margin: 2rem 0;
+  }
+</style>

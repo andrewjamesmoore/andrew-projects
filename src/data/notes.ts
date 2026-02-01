@@ -1,8 +1,9 @@
 export interface Note {
 	title: string;
 	description: string;
-	url: string;
 	date: string;
+	contentPath: string; // path to modal content
+	externalUrl?: string; // optional external link (for repos)
 }
 
 export const notes: Record<string, Note> = {
@@ -11,73 +12,79 @@ export const notes: Record<string, Note> = {
 		date: "2026-01",
 		description:
 			"notes and working snippets from my exploration of OWASP Top 10 A04 Cryptographic Failures",
-		url: "https://gist.github.com/andrewjamesmoore/df39da995f22b535b2f747738c13833c",
+		contentPath: "/notes/cryptographic-failures",
 	},
 	brokenAccessControl: {
 		title: "a01-broken-access-control",
 		date: "2025-12",
 		description:
 			"exploting owasp a01 broken access control to gain unauthorized access to sensitive data or functionality",
-		url: "https://gist.github.com/andrewjamesmoore/b3305eb017ad038b0b783c4dcf5e7caa",
+		contentPath: "/notes/broken-access-control",
 	},
 	shorteningUrls: {
 		title: "shortening-urls-with-node-and-typescript",
 		date: "2025-11",
 		description: "a simple project to learn more about node, express and redis",
-		url: "https://github.com/andrewjamesmoore/url-shortner",
+		contentPath: "/notes/shortening-urls",
+		externalUrl: "https://github.com/andrewjamesmoore/url-shortner",
 	},
 	encryptedCloudBackup: {
 		title: "encrypted-cloud-backup",
 		date: "2025-10",
 		description: "experiments in encrypted syncing and cloud storage",
-		url: "https://gist.github.com/andrewjamesmoore/48736ecaa900333b1c617bb4e6843cf5",
+		contentPath: "/notes/encrypted-cloud-backup",
 	},
 	graphqlServer: {
 		title: "graphql-server-using-go-and-gqlgen",
 		date: "2025-08",
 		description: "building a completely overkill go api for projects and notes",
-		url: "https://github.com/andrewjamesmoore/andrew-projects-api",
+		contentPath: "/notes/graphql-server",
+		externalUrl: "https://github.com/andrewjamesmoore/andrew-projects-api",
 	},
 	tlsChatServer: {
 		title: "tls-chat-server-and-client-built-with-go",
 		date: "2025-07",
 		description:
 			"weekend learning experiment to explore low-level networking in go — specifically using net and tls to create a secure, terminal-based chat server and client.",
-		url: "https://github.com/andrewjamesmoore/secure-chat",
+		contentPath: "/notes/tls-chat-server",
+		externalUrl: "https://github.com/andrewjamesmoore/secure-chat",
 	},
 	lastTabExtension: {
 		title: "last-tab-chrome-extension",
 		date: "2025-07",
 		description:
 			"A minimal Chrome extension that lets you switch to your last used tab using a customizable keyboard shortcut. Like Cmd+Tab for your browser tabs.",
-		url: "https://github.com/andrewjamesmoore/last-tab-chrome-extension",
+		contentPath: "/notes/last-tab-extension",
+		externalUrl: "https://github.com/andrewjamesmoore/last-tab-chrome-extension",
 	},
 	endToEndDeployment: {
 		title: "end-to-end-deployment",
 		date: "2025-06",
 		description:
 			"notes covering every stage of development and infrastructure — from local builds to production-ready automation",
-		url: "https://gist.github.com/andrewjamesmoore/b3c02cc5b4e92c83f8b49bf349e44641",
+		contentPath: "/notes/end-to-end-deployment",
 	},
 	figmaPlugin: {
 		title: "figma-sticky-note-plugin",
 		date: "2025-04",
 		description:
 			"Figgy Sticks helps you create vibrant stickies in your Figma design files with ease. A clean UI and handy keyboard shortcuts let you add multiple notes quickly",
-		url: "https://github.com/andrewjamesmoore/figgy-sticks",
+		contentPath: "/notes/figma-plugin",
+		externalUrl: "https://github.com/andrewjamesmoore/figgy-sticks",
 	},
 	networkingAndCommunication: {
 		title: "networking-and-communication",
 		date: "2025-03",
 		description:
 			"a structured collection of notes covering essential networking concepts and protocols. it serves as a high-level reference to understand the fundamentals of network communication.",
-		url: "https://github.com/andrewjamesmoore/networking",
+		contentPath: "/notes/networking-and-communication",
+		externalUrl: "https://github.com/andrewjamesmoore/networking",
 	},
 	zustandStateManagement: {
 		title: "Zustand for react state management",
 		date: "2025-02",
 		description:
 			"exploring state management through a basic authentication flow",
-		url: "https://gist.github.com/andrewjamesmoore/0c7034c54a540b0a42cc95dc12a25f14",
+		contentPath: "/notes/zustand-state-management",
 	},
 };

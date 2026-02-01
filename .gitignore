@@ -22,3 +22,15 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# vercel settings
+.vercel/
+
+# claude settings
+.claude/
+
+# vscode settings
+.vscode/
+
+# docs settings
+docs/
