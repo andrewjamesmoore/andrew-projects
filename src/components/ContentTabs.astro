@@ -1,0 +1,35 @@
+---
+import Notes from "./Notes.astro";
+import Projects from "./Projects.astro";
+---
+
+<div role="tablist" class="tabs tabs-border tabs-sm">
+    <input
+        type="radio"
+        name="main_tabs"
+        role="tab"
+        class="tab"
+        aria-label="PROJECTS"
+        checked
+    />
+    <div role="tabpanel" class="tab-content">
+        <Projects />
+    </div>
+
+    <input
+        type="radio"
+        name="main_tabs"
+        role="tab"
+        class="tab"
+        aria-label="NOTES"
+    />
+    <div role="tabpanel" class="tab-content">
+        <Notes />
+    </div>
+</div>
+
+<style>
+    .tab-content {
+        padding-top: 1rem;
+    }
+</style>

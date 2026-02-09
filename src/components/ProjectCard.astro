@@ -14,48 +14,37 @@ const {
 const currentStatus = getStatusConfig(status);
 ---
 
-<!-- card -->
-<article class="articleWrapper">
-    <!-- left side -->
-    <div class="articleSide">
-        <div class="flex items-center gap-2">
-            <p class="font-bold">{title}</p>
-            <div class="inline-grid *:[grid-area:1/1]">
-                <div
-                    class={`status rounded-none animate-ping ${currentStatus.color}`}
-                >
-                </div>
-                <div class={`status rounded-none ${currentStatus.color}`}></div>
+<article class="project-card">
+    <div class="card-side">
+        <div class="title-row">
+            <h3 class="title">{title}</h3>
+            <div class="status-indicator">
+                <div class={`status-dot ping ${currentStatus.color}`}></div>
+                <div class={`status-dot ${currentStatus.color}`}></div>
             </div>
-            <p class="text-xs opacity-30">{currentStatus.text}</p>
+            <p class="status-text">{currentStatus.text}</p>
         </div>
-        <p class="text-sm opacity-80 pb-2 lg:pb-0">{description}</p>
+        <p class="description">{description}</p>
     </div>
-    <!-- right side -->
-    <div class="articleSide">
-        <div class="flex gap-3 pb-2 lg:pb-0 lg:justify-end items-center">
-            <span class="text-xs opacity-40 font-medium">view project:</span>
+
+    <div class="card-side">
+        <div class="view-project">
+            <span class="label">view project:</span>
             <a
                 href={giturl}
                 target="_blank"
-                class="link-icon-wrapper group"
+                class="icon-link"
                 aria-label="View source code on GitHub"
                 title="View source code on GitHub"
             >
-                <GitHubLogo
-                    width={icon_size}
-                    height={icon_size}
-                    class="transition-all duration-200 group-hover:scale-110"
-                />
-                <span class="link-label linkText" data-text="GitHub"
-                    >GitHub</span
-                >
+                <GitHubLogo width={icon_size} height={icon_size} class="icon" />
+                <span class="link-label" data-text="GitHub">GitHub</span>
             </a>
         </div>
-        <div class="flex flex-wrap gap-2 lg:justify-end">
+        <div class="tags">
             {
                 tags.map((tag: string) => (
-                    <div class="badge badge-outline rounded-none  text-xs">
+                    <div class="badge badge-outline rounded-none text-xs">
                         {tag}
                     </div>
                 ))
@@ -63,3 +52,150 @@ const currentStatus = getStatusConfig(status);
         </div>
     </div>
 </article>
+
+<style>
+    .project-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        border-bottom: 1px solid rgba(79, 125, 199, 0.2);
+    }
+
+    .card-side {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .title-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .title {
+        font-weight: 700;
+    }
+
+    .status-indicator {
+        display: inline-grid;
+    }
+
+    .status-indicator > * {
+        grid-area: 1 / 1;
+    }
+
+    .status-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 0;
+    }
+
+    .status-dot.ping {
+        animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes ping {
+        75%,
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
+    .status-text {
+        font-size: 0.75rem;
+        opacity: 0.3;
+    }
+
+    .description {
+        font-size: 0.875rem;
+        opacity: 0.8;
+        padding-bottom: 0.5rem;
+    }
+
+    .view-project {
+        display: flex;
+        gap: 0.75rem;
+        padding-bottom: 0.5rem;
+        align-items: center;
+    }
+
+    .label {
+        font-size: 0.75rem;
+        opacity: 0.4;
+        font-weight: 500;
+    }
+
+    .icon-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0.7;
+    }
+
+    .icon-link:hover {
+        opacity: 1;
+    }
+
+    .icon {
+        transition: all 0.2s;
+    }
+
+    .icon-link:hover .icon {
+        transform: scale(1.1);
+    }
+
+    .link-label {
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0;
+        max-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .icon-link:hover .link-label {
+        opacity: 0.8;
+        max-width: 100px;
+        margin-left: 0.25rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    @media (min-width: 1024px) {
+        .project-card {
+            flex-direction: row;
+        }
+
+        .card-side {
+            width: 50%;
+        }
+
+        .description {
+            padding-bottom: 0;
+        }
+
+        .view-project {
+            justify-content: flex-end;
+            padding-bottom: 0;
+        }
+
+        .tags {
+            justify-content: flex-end;
+        }
+    }
+</style>
