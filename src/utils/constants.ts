@@ -1,8 +1,8 @@
 export const andrew = {
-  firstname: "andrew",
-  lastname: "moore",
-  title: "andrew-moore",
-  description: "developer in yyc",
+  firstname: "Andrew",
+  lastname: "Moore",
+  title: "Andrew Moore",
+  description: "Designer and Developer in YYC",
 };
 export const icon_size = 16;
 export const dateYear = {

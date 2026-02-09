@@ -1,6 +1,5 @@
 ---
 import ExternalLink from "@astropub/icons/ExternalLink";
-import FileText from "@astropub/icons/FileText";
 import { icon_size } from "../utils/constants";
 const {
     title = "string",
@@ -10,21 +9,67 @@ const {
 } = Astro.props;
 ---
 
-<article class='articleWrapper'>
-    <div class='articleSide'>
-        <p class='text-xs opacity-50'>{date}</p>
-        <div class='flex gap-2 items-center'>
-            <p class='font-bold'>{title}</p>
-            <FileText width={icon_size} height={icon_size} />
+<article class="note-card">
+    <div class="card-content">
+        <div class="title-row">
+            <h3 class="title">{title}</h3>
+            <p class="date">{date}</p>
         </div>
-        <p class='text-sm opacity-80'>
-            {description}
-        </p>
+        <p class="description">{description}</p>
+        <a href={url} target="_blank" class="link-wrapper">
+            <button class="btn btn-outline btn-sm rounded-none font-normal">
+                <ExternalLink width={icon_size} height={icon_size} />
+                read notes
+            </button>
+        </a>
     </div>
-    <a href={url} target='_blank' class='pt-4 lg: pt-0'>
-        <button class='btn btn-outline rounded-none font-normal'>
-            <ExternalLink width={icon_size} height={icon_size} />
-            read notes
-        </button></a
-    >
 </article>
+
+<style>
+    .note-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        border-bottom: 1px solid rgba(79, 125, 199, 0.2);
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .date {
+        font-size: 0.75rem;
+        opacity: 0.5;
+    }
+
+    .title-row {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .title {
+        font-weight: 700;
+    }
+
+    .description {
+        font-size: 0.875rem;
+        opacity: 0.8;
+    }
+
+    .link-wrapper {
+        padding-top: 1rem;
+    }
+
+    @media (min-width: 1024px) {
+        .link-wrapper {
+            padding-top: 0;
+        }
+    }
+</style>

@@ -3,6 +3,13 @@ import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard.astro";
 ---
 
-<div class="px-2">
+<div class="projects-wrapper">
     {Object.values(projects).map((project) => <ProjectCard {...project} />)}
 </div>
+
+<style>
+    .projects-wrapper {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+</style>

@@ -12,7 +12,7 @@ import Projects from "./Projects.astro";
         aria-label="PROJECTS"
         checked
     />
-    <div role="tabpanel" class="tab-content pt-4">
+    <div role="tabpanel" class="tab-content">
         <Projects />
     </div>
 
@@ -23,7 +23,13 @@ import Projects from "./Projects.astro";
         class="tab"
         aria-label="NOTES"
     />
-    <div role="tabpanel" class="tab-content pt-4">
+    <div role="tabpanel" class="tab-content">
         <Notes />
     </div>
 </div>
+
+<style>
+    .tab-content {
+        padding-top: 1rem;
+    }
+</style>
