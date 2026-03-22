@@ -6,6 +6,13 @@ export interface Note {
 }
 
 export const notes: Record<string, Note> = {
+  visualSubnet: {
+    title: "visual-subnet-calculator",
+    date: "2026-03",
+    description:
+      "building a visual, interactive subnet calculator to help network security studies",
+    url: "https://github.com/andrewjamesmoore/visual-subnet",
+  },
   webMcpChrome: {
     title: "webmcp-in-chrome",
     date: "2026-02",
