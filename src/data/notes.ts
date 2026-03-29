@@ -6,6 +6,13 @@ export interface Note {
 }
 
 export const notes: Record<string, Note> = {
+  seekerCliTool: {
+    title: "seeker-cli-tool",
+    date: "2026-04",
+    description:
+      "seeker is a small cli tool written in Python that allows you to search for files and content and then perform actions by line number",
+    url: "https://github.com/andrewjamesmoore/seeker",
+  },
   visualSubnet: {
     title: "visual-subnet-calculator",
     date: "2026-03",
